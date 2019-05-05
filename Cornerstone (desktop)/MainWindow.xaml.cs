@@ -13,16 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cornerstone__desktop_
-{
+namespace Cornerstone__desktop_ {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class MainWindow : Window {
+        public MainWindow() {
             InitializeComponent();
+        }
+
+        private void AppClose_Click(object sender, RoutedEventArgs e) {
+            // Close application....
+            Application.Current.Shutdown();
+        }
+
+        private void TopBar_MouseDown(object sender, MouseButtonEventArgs e) {
+            DragMove();
+        }
+
+        private void AppMinimize_Click(object sender, RoutedEventArgs e) {
+            // Minimize applcation window
+            WindowState = WindowState.Minimized;
         }
     }
 }

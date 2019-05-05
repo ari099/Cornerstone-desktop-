@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cornerstone__desktop_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Cornerstone" Height="550" Width="800" WindowStyle="None" Background="#FF171B1F" Foreground="White">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7.5"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="67.5"/>
+            <ColumnDefinition Width="67.5"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="3" Background="LightGreen" />
+        <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="3" MouseDown="TopBar_MouseDown" Background="#FF212731">
+            <Label
+                Content="Cornerstone"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="17pt"
+                FontFamily="Grapple BRK"
+                Foreground="#FF5C87B0"
+            />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Button x:Name="AppClose"
+                Content="X"
+                FontFamily="Grapple BRK"
+                FontSize="20pt"
+                Cursor="Hand"
+                Background="#FF682525"
+                Height="50"
+                Foreground="White" Click="AppClose_Click" BorderBrush="{x:Null}"
+            />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Button x:Name="AppMinimize"
+                Content="-"
+                FontFamily="Grapple BRK"
+                FontSize="20pt"
+                Cursor="Hand"
+                Background="#FF204171"
+                Height="50"
+                Foreground="White" Click="AppMinimize_Click" BorderBrush="{x:Null}"
+            />
+        </Grid>
+        <Grid Grid.Row="2" >
+            <Canvas HorizontalAlignment="Left" Height="100" Margin="335,192,0,0" VerticalAlignment="Top" Width="100"/>
+        </Grid>
     </Grid>
 </Window>
