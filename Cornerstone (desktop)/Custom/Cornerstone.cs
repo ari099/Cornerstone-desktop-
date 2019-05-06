@@ -12,7 +12,7 @@ namespace Cornerstone__desktop_.Custom {
     /// cornerstone.sqlite3 database
     /// </summary>
     public class Cornerstone {
-        private string bibleXmlPath = "";
+        private string bibleXmlPath = "../../Bible/xml/t_kjv.xml";
         private XmlDocument bible = new XmlDocument();
 
         public Cornerstone() {
