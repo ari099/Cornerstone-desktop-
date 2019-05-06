@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cornerstone__desktop_"
         mc:Ignorable="d"
-        Title="Cornerstone" Height="550" Width="800" WindowStyle="None" Background="#FF171B1F" Foreground="White">
+        Title="Cornerstone" Height="550" Width="800" WindowStyle="None" Background="#FF121518" Foreground="White">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="7.5"/>
@@ -18,7 +18,8 @@
             <ColumnDefinition Width="67.5"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.ColumnSpan="3" Background="LightGreen" />
-        <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="3" MouseDown="TopBar_MouseDown" Background="#FF212731">
+        <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="3" MouseDown="TopBar_MouseDown" Background="#FF212731"
+              Cursor="Hand">
             <Label
                 Content="Cornerstone"
                 HorizontalAlignment="Center"
@@ -51,7 +52,90 @@
             />
         </Grid>
         <Grid Grid.Row="2" >
-            <Canvas HorizontalAlignment="Left" Height="100" Margin="335,192,0,0" VerticalAlignment="Top" Width="100"/>
+            <Canvas x:Name="ScriptureText"
+                Background="#FF0C1717"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+            />
+        </Grid>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Background="#FF3C1515">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Book:"
+                FontFamily="Grapple BRK"
+                FontSize="12pt"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="#FF8B4B4B" />
+            <ListBox x:Name="Books"
+                Grid.Row="1"
+                FontFamily="Segoe UI"
+                FontSize="12pt"
+                HorizontalAlignment="Stretch"
+                Cursor="Hand"
+                VerticalAlignment="Stretch"
+                Background="#FF8B4B4B"
+                Foreground="White" BorderBrush="{x:Null}" />
+            <Label Content="Chapter:"
+                Grid.Row="2"
+                FontFamily="Grapple BRK"
+                FontSize="12pt"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="#FF8B4B4B" />
+            <ListBox x:Name="Chapters"
+                Grid.Row="3"
+                FontFamily="Segoe UI"
+                FontSize="12pt"
+                HorizontalAlignment="Stretch"
+                Cursor="Hand"
+                VerticalAlignment="Stretch"
+                Background="#FF8B4B4B"
+                Foreground="White" BorderBrush="{x:Null}" />
+            <Label Content="Verses:"
+                Grid.Row="4"
+                FontFamily="Grapple BRK"
+                FontSize="12pt"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="#FF8B4B4B" />
+            <ListBox x:Name="Verses"
+                Grid.Row="5"
+                FontFamily="Segoe UI"
+                Cursor="Hand"
+                FontSize="12pt"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#FF8B4B4B"
+                Foreground="White" BorderBrush="{x:Null}" />
+            <TextBox x:Name="VerseNote"
+                Grid.Row="6"
+                FontFamily="Segoe UI"
+                Cursor="IBeam"
+                FontSize="12pt"
+                Margin="10"
+                Padding="5"
+                Background="#FF200D0D"
+                Foreground="White" BorderBrush="{x:Null}" />
+            <Button x:Name="SaveVerseNote"
+                Cursor="Hand"
+                Grid.Row="7"
+                FontFamily="Grapple BRK"
+                FontSize="10pt"
+                Content="Save Note"
+                Background="#FF8B4B4B"
+                Foreground="White"
+                Margin="10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" BorderBrush="{x:Null}" Click="SaveVerseNote_Click" />
         </Grid>
     </Grid>
 </Window>

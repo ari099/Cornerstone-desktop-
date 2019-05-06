@@ -28,12 +28,17 @@ namespace Cornerstone__desktop_ {
         }
 
         private void TopBar_MouseDown(object sender, MouseButtonEventArgs e) {
+            // Drag window by top bar....
             DragMove();
         }
 
         private void AppMinimize_Click(object sender, RoutedEventArgs e) {
-            // Minimize applcation window
+            // Minimize applcation window....
             WindowState = WindowState.Minimized;
+        }
+
+        private void SaveVerseNote_Click(object sender, RoutedEventArgs e) {
+            // Save note to database....
         }
     }
 }

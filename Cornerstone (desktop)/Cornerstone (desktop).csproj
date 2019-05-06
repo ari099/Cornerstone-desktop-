@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,8 +37,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.110.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.110.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.110.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,6 +81,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Custom\Cornerstone.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -86,6 +105,32 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Bible\bible-sqlite.db" />
+    <None Include="Bible\csv\bible_version_key.csv" />
+    <None Include="Bible\csv\key_abbreviations_english.csv" />
+    <None Include="Bible\csv\key_english.csv" />
+    <None Include="Bible\csv\key_genre_english.csv" />
+    <None Include="Bible\csv\t_asv.csv" />
+    <None Include="Bible\csv\t_bbe.csv" />
+    <None Include="Bible\csv\t_dby.csv" />
+    <None Include="Bible\csv\t_kjv.csv" />
+    <None Include="Bible\csv\t_wbt.csv" />
+    <None Include="Bible\csv\t_web.csv" />
+    <None Include="Bible\csv\t_ylt.csv" />
+    <None Include="Bible\json\bible_version_key.json" />
+    <None Include="Bible\json\key_abbreviations_english.json" />
+    <None Include="Bible\json\key_english.json" />
+    <None Include="Bible\json\key_genre_english.json" />
+    <None Include="Bible\json\t_asv.json" />
+    <None Include="Bible\json\t_bbe.json" />
+    <None Include="Bible\json\t_dby.json" />
+    <None Include="Bible\json\t_kjv.json" />
+    <None Include="Bible\json\t_wbt.json" />
+    <None Include="Bible\json\t_web.json" />
+    <None Include="Bible\json\t_ylt.json" />
+    <None Include="Bible\README.md" />
+    <None Include="Custom\cornerstone.sqlite3" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,5 +139,65 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bible\bible-mysql.sql" />
+    <Content Include="Bible\cross_reference-mysql.sql" />
+    <Resource Include="Bible\cross_references.txt" />
+    <Content Include="Bible\mssql\dbo.bible_version_key.Table.sql" />
+    <Content Include="Bible\mssql\dbo.cross_reference.Table.sql" />
+    <Content Include="Bible\mssql\dbo.key_abbreviations_english.Table.sql" />
+    <Content Include="Bible\mssql\dbo.key_english.Table.sql" />
+    <Content Include="Bible\mssql\dbo.key_genre_english.Table.sql" />
+    <Content Include="Bible\mssql\dbo.t_asv.Table.sql" />
+    <Content Include="Bible\mssql\dbo.t_bbe.Table.sql" />
+    <Content Include="Bible\mssql\dbo.t_dby.Table.sql" />
+    <Content Include="Bible\mssql\dbo.t_kjv.Table.sql" />
+    <Content Include="Bible\mssql\dbo.t_wbt.Table.sql" />
+    <Content Include="Bible\mssql\dbo.t_web.Table.sql" />
+    <Content Include="Bible\mssql\dbo.t_ylt.Table.sql" />
+    <Content Include="Bible\sql\bible_version_key.sql" />
+    <Content Include="Bible\sql\key_abbreviations_english.sql" />
+    <Content Include="Bible\sql\key_english.sql" />
+    <Content Include="Bible\sql\key_genre_english.sql" />
+    <Content Include="Bible\sql\t_asv.sql" />
+    <Content Include="Bible\sql\t_bbe.sql" />
+    <Content Include="Bible\sql\t_dby.sql" />
+    <Content Include="Bible\sql\t_kjv.sql" />
+    <Content Include="Bible\sql\t_wbt.sql" />
+    <Content Include="Bible\sql\t_web.sql" />
+    <Content Include="Bible\sql\t_ylt.sql" />
+    <Content Include="Bible\tsql\bible_version_key.sql" />
+    <Content Include="Bible\tsql\dbo.t_asv.sql" />
+    <Content Include="Bible\tsql\dbo.t_bbe.sql" />
+    <Content Include="Bible\tsql\dbo.t_dby.sql" />
+    <Content Include="Bible\tsql\dbo.t_kjv.sql" />
+    <Content Include="Bible\tsql\dbo.t_wbt.sql" />
+    <Content Include="Bible\tsql\dbo.t_web.sql" />
+    <Content Include="Bible\tsql\dbo.t_ylt.sql" />
+    <Content Include="Bible\tsql\key_abbreviations_english.sql" />
+    <Content Include="Bible\tsql\key_english.sql" />
+    <Content Include="Bible\tsql\key_genre_english.sql" />
+    <Content Include="Bible\web\bible_to_sql.php" />
+    <Content Include="Bible\web\index.php" />
+    <Resource Include="Bible\xml\bible_version_key.xml" />
+    <Resource Include="Bible\xml\key_abbreviations_english.xml" />
+    <Resource Include="Bible\xml\key_english.xml" />
+    <Resource Include="Bible\xml\key_genre_english.xml" />
+    <Resource Include="Bible\xml\t_asv.xml" />
+    <Resource Include="Bible\xml\t_bbe.xml" />
+    <Resource Include="Bible\xml\t_dby.xml" />
+    <Resource Include="Bible\xml\t_kjv.xml" />
+    <Resource Include="Bible\xml\t_wbt.xml" />
+    <Resource Include="Bible\xml\t_web.xml" />
+    <Resource Include="Bible\xml\t_ylt.xml" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
 </Project>
