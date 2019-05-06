@@ -14,11 +14,12 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="67.5"/>
-            <ColumnDefinition Width="67.5"/>
+            <ColumnDefinition Width="78.3"/>
+            <ColumnDefinition Width="78.3"/>
+            <ColumnDefinition Width="78.3"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.ColumnSpan="3" Background="LightGreen" />
-        <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="3" MouseDown="TopBar_MouseDown" Background="#FF212731"
+        <Grid x:Name="StyleTopBar" MouseDown="StyleTopBar_MouseDown" Grid.ColumnSpan="4" Background="LightGreen" />
+        <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="4" MouseDown="TopBar_MouseDown" Background="#FF212731"
               Cursor="Hand">
             <Label
                 Content="Cornerstone"
@@ -30,24 +31,35 @@
             />
         </Grid>
         <Grid Grid.Column="2" Grid.Row="1">
+            <Button x:Name="AppMaximize"
+                Content="🗖"
+                Margin="10"
+                FontFamily="Grapple BRK"
+                FontSize="12pt"
+                Cursor="Hand"
+                Background="DarkCyan"
+                Foreground="White" Click="AppMaximize_Click" BorderBrush="{x:Null}"
+            />
+        </Grid>
+        <Grid Grid.Column="3" Grid.Row="1">
             <Button x:Name="AppClose"
                 Content="X"
+                Margin="10"
                 FontFamily="Grapple BRK"
-                FontSize="20pt"
+                FontSize="12pt"
                 Cursor="Hand"
                 Background="#FF682525"
-                Height="50"
                 Foreground="White" Click="AppClose_Click" BorderBrush="{x:Null}"
             />
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <Button x:Name="AppMinimize"
                 Content="-"
+                Margin="10"
                 FontFamily="Grapple BRK"
-                FontSize="20pt"
+                FontSize="12pt"
                 Cursor="Hand"
                 Background="#FF204171"
-                Height="50"
                 Foreground="White" Click="AppMinimize_Click" BorderBrush="{x:Null}"
             />
         </Grid>
@@ -58,7 +70,7 @@
                 VerticalAlignment="Stretch"
             />
         </Grid>
-        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Background="#FF3C1515">
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Background="#FF1A1E26">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
@@ -66,55 +78,64 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="140"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Label Content="Book:"
                 FontFamily="Grapple BRK"
-                FontSize="12pt"
+                FontSize="17pt"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Foreground="#FF8B4B4B" />
-            <ListBox x:Name="Books"
+                Foreground="#FF1F2E3A" Background="{x:Null}" />
+            <ListView x:Name="Books"
                 Grid.Row="1"
-                FontFamily="Segoe UI"
+                Loaded="Books_Loaded"
+                FontFamily="Grapple BRK"
                 FontSize="12pt"
-                HorizontalAlignment="Stretch"
                 Cursor="Hand"
+                Height="25"
                 VerticalAlignment="Stretch"
-                Background="#FF8B4B4B"
-                Foreground="White" BorderBrush="{x:Null}" />
+                Background="#FF212731"
+                Foreground="White" BorderBrush="{x:Null}">
+                <!--<ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="180" />
+                    </Style>
+                </ListView.ItemContainerStyle>-->
+            </ListView>
             <Label Content="Chapter:"
                 Grid.Row="2"
                 FontFamily="Grapple BRK"
-                FontSize="12pt"
+                FontSize="17pt"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Foreground="#FF8B4B4B" />
+                Foreground="#FF1F2E3A" Background="{x:Null}" />
             <ListBox x:Name="Chapters"
                 Grid.Row="3"
-                FontFamily="Segoe UI"
+                FontFamily="Grapple BRK"
                 FontSize="12pt"
+                Height="25"
                 HorizontalAlignment="Stretch"
                 Cursor="Hand"
                 VerticalAlignment="Stretch"
-                Background="#FF8B4B4B"
+                Background="#FF212731"
                 Foreground="White" BorderBrush="{x:Null}" />
             <Label Content="Verses:"
                 Grid.Row="4"
                 FontFamily="Grapple BRK"
-                FontSize="12pt"
+                FontSize="17pt"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Foreground="#FF8B4B4B" />
+                Foreground="#FF1F2E3A" Background="{x:Null}" />
             <ListBox x:Name="Verses"
                 Grid.Row="5"
-                FontFamily="Segoe UI"
+                FontFamily="Grapple BRK"
                 Cursor="Hand"
                 FontSize="12pt"
+                Height="25"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Background="#FF8B4B4B"
+                Background="#FF212731"
                 Foreground="White" BorderBrush="{x:Null}" />
             <TextBox x:Name="VerseNote"
                 Grid.Row="6"
@@ -123,16 +144,16 @@
                 FontSize="12pt"
                 Margin="10"
                 Padding="5"
-                Background="#FF200D0D"
+                Background="#FF0B121A"
                 Foreground="White" BorderBrush="{x:Null}" />
             <Button x:Name="SaveVerseNote"
                 Cursor="Hand"
                 Grid.Row="7"
                 FontFamily="Grapple BRK"
-                FontSize="10pt"
+                FontSize="20pt"
                 Content="Save Note"
-                Background="#FF8B4B4B"
-                Foreground="White"
+                Background="LightGreen"
+                Foreground="#FF1F2E3A"
                 Margin="10"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch" BorderBrush="{x:Null}" Click="SaveVerseNote_Click" />

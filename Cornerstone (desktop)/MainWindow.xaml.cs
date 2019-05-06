@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Cornerstone__desktop_.Custom;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +41,24 @@ namespace Cornerstone__desktop_ {
 
         private void SaveVerseNote_Click(object sender, RoutedEventArgs e) {
             // Save note to database....
+        }
+
+        private void Books_Loaded(object sender, RoutedEventArgs e) {
+            // Load books into the ListBox....
+            Cornerstone cs = new Cornerstone();
+            cs.books.ForEach(item => Books.Items.Add(item));
+        }
+
+        private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {
+            // Drag window by top styled bar....
+            DragMove();
+        }
+
+        private void AppMaximize_Click(object sender, RoutedEventArgs e) {
+            // Change window state....
+            if (Application.Current.MainWindow.WindowState == WindowState.Normal)
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+            else Application.Current.MainWindow.WindowState = WindowState.Normal;
         }
     }
 }
