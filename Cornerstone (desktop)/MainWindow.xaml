@@ -75,7 +75,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Margin="7.5">
-                <ListBoxItem Content="kjv"/>
+                <ListBoxItem Content="kjv" IsSelected="True"/>
                 <ListBoxItem Content="web"/>
                 <ListBoxItem Content="asv"/>
                 <ListBoxItem Content="bbe"/>
@@ -119,7 +119,7 @@
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
                 Foreground="LightGreen" BorderBrush="{x:Null}">
-                <ListBoxItem Content="Genesis"/>
+                <ListBoxItem Content="Genesis" IsSelected="True"/>
                 <ListBoxItem Content="Exodus"/>
                 <ListBoxItem Content="Leviticus"/>
                 <ListBoxItem Content="Numbers"/>
@@ -203,7 +203,9 @@
                 Cursor="Hand"
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
-                Foreground="LightGreen" BorderBrush="{x:Null}" />
+                Foreground="LightGreen" BorderBrush="{x:Null}">
+                <ListBoxItem IsEnabled="False">Select Chapter</ListBoxItem>
+            </ListBox>
             <Label Content="Verse:"
                 Grid.Row="4"
                 FontFamily="Constantine"
@@ -221,7 +223,9 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
-                Foreground="LightGreen" BorderBrush="{x:Null}" />
+                Foreground="LightGreen" BorderBrush="{x:Null}">
+                <ListBoxItem IsEnabled="False">Select Verse</ListBoxItem>
+            </ListBox>
             <TextBox x:Name="VerseNote"
                 Grid.Row="6"
                 FontFamily="Segoe UI Semibold"

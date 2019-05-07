@@ -109,6 +109,15 @@ namespace Cornerstone__desktop_.Custom {
         }
 
         /// <summary>
+        /// Get the index of the list of Bible books by the book name
+        /// </summary>
+        /// <param name="book_name"></param>
+        /// <returns></returns>
+        public int GetBookIndex(string book_name) {
+            return books.IndexOf(book_name) + 1;
+        }
+
+        /// <summary>
         /// Get number of chapters in a particular book of the Bible
         /// </summary>
         /// <param name="book_no"></param>
@@ -131,6 +140,27 @@ namespace Cornerstone__desktop_.Custom {
         }
 
         /// <summary>
+        /// Get number of chapters in a particular book of the Bible
+        /// </summary>
+        /// <param name="book_name"></param>
+        /// <returns></returns>
+        public int GetNumberOfChapters(string book_name) {
+            List<int> chapter_numbers = new List<int>();
+            XmlElement root = bible.DocumentElement;
+            var book = root.ChildNodes.Cast<XmlNode>()
+                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == GetBookIndex(book_name))
+                .Select(x => x)
+                .ToList();
+            book.ForEach(x => {
+                var code = x.FirstChild.InnerText;
+                if (!chapter_numbers.Contains(Convert.ToInt32(code.Substring(2, 3))))
+                    chapter_numbers.Add(Convert.ToInt32(code.Substring(2, 3)));
+            });
+
+            return chapter_numbers.Count;
+        }
+
+        /// <summary>
         /// Get number of verses in a particular chapter of a
         /// particular book of the Bible
         /// </summary>
@@ -142,6 +172,29 @@ namespace Cornerstone__desktop_.Custom {
             XmlElement root = bible.DocumentElement;
             var book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
+                .Select(x => x)
+                .ToList();
+            book.ForEach(x => {
+                var code = x.FirstChild.InnerText;
+                if (!verse_numbers.Contains(Convert.ToInt32(code.Substring(5, 3))))
+                    verse_numbers.Add(Convert.ToInt32(code.Substring(5, 3)));
+            });
+
+            return verse_numbers.Count;
+        }
+
+        /// <summary>
+        /// Get number of verses in a particular chapter of a
+        /// particular book of the Bible
+        /// </summary>
+        /// <param name="book_name"></param>
+        /// <param name="chapter_no"></param>
+        /// <returns></returns>
+        public int GetNumberOfVerses(string book_name, int chapter_no) {
+            List<int> verse_numbers = new List<int>();
+            XmlElement root = bible.DocumentElement;
+            var book = root.ChildNodes.Cast<XmlNode>()
+                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == GetBookIndex(book_name) && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();
             book.ForEach(x => {
@@ -199,6 +252,32 @@ namespace Cornerstone__desktop_.Custom {
         }
 
         /// <summary>
+        /// Obtain the Bible verse with the book, chapter,
+        /// and verse specified
+        /// </summary>
+        /// <param name="book_name"></param>
+        /// <param name="chapter_no"></param>
+        /// <param name="verse_no"></param>
+        /// <returns></returns>
+        public string GetVerse(string book_name, int chapter_no, int verse_no) {
+            string code = GetBookIndex(book_name).ToString("00") +
+                chapter_no.ToString("000") +
+                verse_no.ToString("000");
+
+            XmlElement root = bible.DocumentElement;
+            string verse_text = null;
+            var book = root.ChildNodes.Cast<XmlNode>()
+                .Where(verse => verse.FirstChild.InnerText == code)
+                .Select(x => x)
+                .ToList();
+            book.ForEach(x => {
+                verse_text = x.ChildNodes.Item(4).InnerText;
+            });
+
+            return verse_text;
+        }
+
+        /// <summary>
         /// Obtain all the verses associated with a particular chapter
         /// of a particular book of the Bible
         /// </summary>
@@ -210,6 +289,28 @@ namespace Cornerstone__desktop_.Custom {
             XmlElement root = bible.DocumentElement;
             var book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
+                .Select(x => x)
+                .ToList();
+            book.ForEach(x => {
+                string verse = x.ChildNodes.Item(4).InnerText;
+                verses.Add(verse);
+            });
+
+            return verses.ToArray();
+        }
+
+        /// <summary>
+        /// Obtain all the verses associated with a particular chapter
+        /// of a particular book of the Bible
+        /// </summary>
+        /// <param name="book_name"></param>
+        /// <param name="chapter_no"></param>
+        /// <returns></returns>
+        public string[] GetFullChapter(string book_name, int chapter_no) {
+            List<string> verses = new List<string>();
+            XmlElement root = bible.DocumentElement;
+            var book = root.ChildNodes.Cast<XmlNode>()
+                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == GetBookIndex(book_name) && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();
             book.ForEach(x => {

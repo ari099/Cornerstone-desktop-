@@ -20,7 +20,9 @@ namespace Cornerstone__desktop_ {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        private Cornerstone bible;
         public MainWindow() {
+            bible = new Cornerstone();
             InitializeComponent();
         }
 
@@ -41,13 +43,13 @@ namespace Cornerstone__desktop_ {
 
         private void SaveVerseNote_Click(object sender, RoutedEventArgs e) {
             // Save note to database....
-            Cornerstone cs = new Cornerstone();
-            Debug.Print(cs.GetNumberOfChapters(1).ToString());
-            Debug.Print(cs.GetNumberOfVerses(1, 1).ToString());
-            Debug.Print(cs.GetVerse("01001001"));
-            Debug.Print(cs.GetVerse(1,1,1));
-            foreach(var verse in cs.GetFullChapter(1, 1))
-                Debug.Print(verse.ToString());
+            //Cornerstone cs = new Cornerstone();
+            //Debug.Print(cs.GetNumberOfChapters(1).ToString());
+            //Debug.Print(cs.GetNumberOfVerses(1, 1).ToString());
+            //Debug.Print(cs.GetVerse("01001001"));
+            //Debug.Print(cs.GetVerse(1,1,1));
+            //foreach(var verse in cs.GetFullChapter(1, 1))
+            //    Debug.Print(verse.ToString());
         }
 
         private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -60,6 +62,21 @@ namespace Cornerstone__desktop_ {
             if (Application.Current.MainWindow.WindowState == WindowState.Normal)
                 Application.Current.MainWindow.WindowState = WindowState.Maximized;
             else Application.Current.MainWindow.WindowState = WindowState.Normal;
+        }
+
+        private void Books_Selected(object sender, RoutedEventArgs e) {
+            string selectedBook = (Books.SelectedItem as ListBoxItem).Content.ToString();
+            int limit = bible.GetNumberOfChapters(selectedBook);
+            if(Chapters != null) Chapters.Items.Clear();
+            for (int i = 1; i <= limit; i++) Chapters.Items.Add(i);
+        }
+
+        private void Chapters_Selected(object sender, RoutedEventArgs e) {
+            string selectedBook = (Books.SelectedItem as ListBoxItem).Content.ToString();
+            int selectedChapter = Convert.ToInt32((Chapters.SelectedItem as ListBoxItem).Content.ToString());
+            int limit = bible.GetNumberOfVerses(selectedBook, selectedChapter);
+            if(Verses != null) Verses.Items.Clear();
+            for (int i = 1; i <= limit; i++) Verses.Items.Add(i);
         }
     }
 }
