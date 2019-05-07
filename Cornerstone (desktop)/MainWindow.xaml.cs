@@ -41,6 +41,13 @@ namespace Cornerstone__desktop_ {
 
         private void SaveVerseNote_Click(object sender, RoutedEventArgs e) {
             // Save note to database....
+            Cornerstone cs = new Cornerstone();
+            Debug.Print(cs.GetNumberOfChapters(1).ToString());
+            Debug.Print(cs.GetNumberOfVerses(1, 1).ToString());
+            Debug.Print(cs.GetVerse("01001001"));
+            Debug.Print(cs.GetVerse(1,1,1));
+            foreach(var verse in cs.GetFullChapter(1, 1))
+                Debug.Print(verse.ToString());
         }
 
         private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {

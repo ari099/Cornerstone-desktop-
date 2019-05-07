@@ -85,11 +85,12 @@
             </ListBox>
         </Grid>
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
-            <Canvas x:Name="ScriptureText"
-                Background="#FF0C1717"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-            />
+            <FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                Foreground="LightGreen">
+                <FlowDocument x:Name="ScriptureText"
+                    Background="#FF0C1717" Foreground="LightGreen" />
+            </FlowDocumentReader>
         </Grid>
         <Grid Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Background="#FF1A1E26">
             <Grid.RowDefinitions>
@@ -111,14 +112,14 @@
                 Foreground="LightGreen" Background="{x:Null}" />
             <ListBox x:Name="Books"
                 Grid.Row="1"
-                FontFamily="Grapple BRK"
+                FontFamily="Segoe UI Semibold"
                 FontSize="12pt"
                 Cursor="Hand"
                 Height="30"
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
                 Foreground="LightGreen" BorderBrush="{x:Null}">
-                <ListBoxItem Content="Genesis" FontFamily="Segoe UI Semibold"/>
+                <ListBoxItem Content="Genesis"/>
                 <ListBoxItem Content="Exodus"/>
                 <ListBoxItem Content="Leviticus"/>
                 <ListBoxItem Content="Numbers"/>
@@ -203,7 +204,7 @@
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
                 Foreground="LightGreen" BorderBrush="{x:Null}" />
-            <Label Content="Verses:"
+            <Label Content="Verse:"
                 Grid.Row="4"
                 FontFamily="Constantine"
                 Margin="2.5"
