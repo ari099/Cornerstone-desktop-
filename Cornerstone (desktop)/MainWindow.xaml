@@ -13,24 +13,25 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="117.5"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="78.3"/>
             <ColumnDefinition Width="78.3"/>
             <ColumnDefinition Width="78.3"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="StyleTopBar" MouseDown="StyleTopBar_MouseDown" Grid.ColumnSpan="4" Background="LightGreen" />
-        <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="4" MouseDown="TopBar_MouseDown" Background="#FF212731"
+        <Grid x:Name="StyleTopBar" MouseDown="StyleTopBar_MouseDown" Grid.ColumnSpan="5" Background="LightGreen" />
+        <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="5" MouseDown="TopBar_MouseDown" Background="#FF212731"
               Cursor="Hand">
             <Label
                 Content="Cornerstone"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="17pt"
-                FontFamily="Grapple BRK"
+                FontFamily="Constantine"
                 Foreground="#FF5C87B0"
             />
         </Grid>
-        <Grid Grid.Column="2" Grid.Row="1">
+        <Grid Grid.Column="3" Grid.Row="1">
             <Button x:Name="AppMaximize"
                 Content="🗖"
                 Margin="10"
@@ -41,7 +42,7 @@
                 Foreground="White" Click="AppMaximize_Click" BorderBrush="{x:Null}"
             />
         </Grid>
-        <Grid Grid.Column="3" Grid.Row="1">
+        <Grid Grid.Column="4" Grid.Row="1">
             <Button x:Name="AppClose"
                 Content="X"
                 Margin="10"
@@ -52,7 +53,7 @@
                 Foreground="White" Click="AppClose_Click" BorderBrush="{x:Null}"
             />
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="2" Grid.Row="1">
             <Button x:Name="AppMinimize"
                 Content="-"
                 Margin="10"
@@ -63,14 +64,34 @@
                 Foreground="White" Click="AppMinimize_Click" BorderBrush="{x:Null}"
             />
         </Grid>
-        <Grid Grid.Row="2" >
+        <Grid Grid.Row="1">
+            <ListBox x:Name="VersionList"
+                Background="#FF0C1717"
+                Foreground="LightGreen"
+                BorderBrush="{x:Null}"
+                FontFamily="Segoe UI Semibold"
+                FontSize="15pt"
+                Cursor="Hand"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="7.5">
+                <ListBoxItem Content="kjv"/>
+                <ListBoxItem Content="web"/>
+                <ListBoxItem Content="asv"/>
+                <ListBoxItem Content="bbe"/>
+                <ListBoxItem Content="dby"/>
+                <ListBoxItem Content="wbt"/>
+                <ListBoxItem Content="ylt"/>
+            </ListBox>
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Canvas x:Name="ScriptureText"
                 Background="#FF0C1717"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
             />
         </Grid>
-        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Background="#FF1A1E26">
+        <Grid Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Background="#FF1A1E26">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
@@ -82,74 +103,137 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Label Content="Book:"
-                FontFamily="Grapple BRK"
-                FontSize="17pt"
+                FontFamily="Constantine"
+                FontSize="15pt"
                 HorizontalAlignment="Center"
+                Margin="2.5"
                 VerticalAlignment="Center"
-                Foreground="#FF1F2E3A" Background="{x:Null}" />
-            <ListView x:Name="Books"
+                Foreground="LightGreen" Background="{x:Null}" />
+            <ListBox x:Name="Books"
                 Grid.Row="1"
-                Loaded="Books_Loaded"
                 FontFamily="Grapple BRK"
                 FontSize="12pt"
                 Cursor="Hand"
-                Height="25"
+                Height="30"
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
-                Foreground="White" BorderBrush="{x:Null}">
-                <!--<ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="Height" Value="180" />
-                    </Style>
-                </ListView.ItemContainerStyle>-->
-            </ListView>
+                Foreground="LightGreen" BorderBrush="{x:Null}">
+                <ListBoxItem Content="Genesis" FontFamily="Segoe UI Semibold"/>
+                <ListBoxItem Content="Exodus"/>
+                <ListBoxItem Content="Leviticus"/>
+                <ListBoxItem Content="Numbers"/>
+                <ListBoxItem Content="Deuteronomy"/>
+                <ListBoxItem Content="Joshua"/>
+                <ListBoxItem Content="Judges"/>
+                <ListBoxItem Content="Ruth"/>
+                <ListBoxItem Content="1 Samuel"/>
+                <ListBoxItem Content="2 Samuel"/>
+                <ListBoxItem Content="1 Kings"/>
+                <ListBoxItem Content="2 Kings"/>
+                <ListBoxItem Content="1 Chronicles"/>
+                <ListBoxItem Content="2 Chronicles"/>
+                <ListBoxItem Content="Ezra"/>
+                <ListBoxItem Content="Nehemiah"/>
+                <ListBoxItem Content="Esther"/>
+                <ListBoxItem Content="Job"/>
+                <ListBoxItem Content="Psalms"/>
+                <ListBoxItem Content="Proverbs"/>
+                <ListBoxItem Content="Ecclesiastes"/>
+                <ListBoxItem Content="Song of Solomon"/>
+                <ListBoxItem Content="Isaiah"/>
+                <ListBoxItem Content="Jeremiah"/>
+                <ListBoxItem Content="Lamentations"/>
+                <ListBoxItem Content="Ezekiel"/>
+                <ListBoxItem Content="Daniel"/>
+                <ListBoxItem Content="Hosea"/>
+                <ListBoxItem Content="Joel"/>
+                <ListBoxItem Content="Amos"/>
+                <ListBoxItem Content="Obadiah"/>
+                <ListBoxItem Content="Jonah"/>
+                <ListBoxItem Content="Micah"/>
+                <ListBoxItem Content="Nahum"/>
+                <ListBoxItem Content="Habakkuk"/>
+                <ListBoxItem Content="Zephaniah"/>
+                <ListBoxItem Content="Haggai"/>
+                <ListBoxItem Content="Zechariah"/>
+                <ListBoxItem Content="Malachi"/>
+                <ListBoxItem Content="Matthew"/>
+                <ListBoxItem Content="Mark"/>
+                <ListBoxItem Content="Luke"/>
+                <ListBoxItem Content="John"/>
+                <ListBoxItem Content="Acts of the Apostles"/>
+                <ListBoxItem Content="Romans"/>
+                <ListBoxItem Content="1 Corinthians"/>
+                <ListBoxItem Content="2 Corinthians"/>
+                <ListBoxItem Content="Galatians"/>
+                <ListBoxItem Content="Ephesians"/>
+                <ListBoxItem Content="Phillippians"/>
+                <ListBoxItem Content="Colossians"/>
+                <ListBoxItem Content="1 Thessalonians"/>
+                <ListBoxItem Content="2 Thessalonians"/>
+                <ListBoxItem Content="1 Timothy"/>
+                <ListBoxItem Content="2 Timothy"/>
+                <ListBoxItem Content="Titus"/>
+                <ListBoxItem Content="Philemon"/>
+                <ListBoxItem Content="Hebrews"/>
+                <ListBoxItem Content="James"/>
+                <ListBoxItem Content="1 Peter"/>
+                <ListBoxItem Content="2 Peter"/>
+                <ListBoxItem Content="1 John"/>
+                <ListBoxItem Content="2 John"/>
+                <ListBoxItem Content="3 John"/>
+                <ListBoxItem Content="Jude"/>
+                <ListBoxItem Content="Revelation"/>
+            </ListBox>
             <Label Content="Chapter:"
                 Grid.Row="2"
-                FontFamily="Grapple BRK"
-                FontSize="17pt"
+                FontFamily="Constantine"
+                Margin="2.5"
+                FontSize="15pt"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Foreground="#FF1F2E3A" Background="{x:Null}" />
+                Foreground="LightGreen" Background="{x:Null}" />
             <ListBox x:Name="Chapters"
                 Grid.Row="3"
-                FontFamily="Grapple BRK"
+                FontFamily="Segoe UI Semibold"
                 FontSize="12pt"
-                Height="25"
+                Height="30"
                 HorizontalAlignment="Stretch"
                 Cursor="Hand"
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
-                Foreground="White" BorderBrush="{x:Null}" />
+                Foreground="LightGreen" BorderBrush="{x:Null}" />
             <Label Content="Verses:"
                 Grid.Row="4"
-                FontFamily="Grapple BRK"
-                FontSize="17pt"
+                FontFamily="Constantine"
+                Margin="2.5"
+                FontSize="15pt"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Foreground="#FF1F2E3A" Background="{x:Null}" />
+                Foreground="LightGreen" Background="{x:Null}" />
             <ListBox x:Name="Verses"
                 Grid.Row="5"
-                FontFamily="Grapple BRK"
+                FontFamily="Segoe UI Semibold"
                 Cursor="Hand"
                 FontSize="12pt"
-                Height="25"
+                Height="30"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Background="#FF212731"
-                Foreground="White" BorderBrush="{x:Null}" />
+                Foreground="LightGreen" BorderBrush="{x:Null}" />
             <TextBox x:Name="VerseNote"
                 Grid.Row="6"
-                FontFamily="Segoe UI"
+                FontFamily="Segoe UI Semibold"
                 Cursor="IBeam"
                 FontSize="12pt"
                 Margin="10"
-                Padding="5"
+                Padding="10"
                 Background="#FF0B121A"
-                Foreground="White" BorderBrush="{x:Null}" />
+                Foreground="LightGreen" BorderBrush="LightGreen" />
             <Button x:Name="SaveVerseNote"
                 Cursor="Hand"
                 Grid.Row="7"
-                FontFamily="Grapple BRK"
+                FontFamily="Constantine"
                 FontSize="20pt"
                 Content="Save Note"
                 Background="LightGreen"

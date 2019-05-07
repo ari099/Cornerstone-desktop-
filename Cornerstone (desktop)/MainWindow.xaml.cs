@@ -43,12 +43,6 @@ namespace Cornerstone__desktop_ {
             // Save note to database....
         }
 
-        private void Books_Loaded(object sender, RoutedEventArgs e) {
-            // Load books into the ListBox....
-            Cornerstone cs = new Cornerstone();
-            cs.books.ForEach(item => Books.Items.Add(item));
-        }
-
         private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {
             // Drag window by top styled bar....
             DragMove();
