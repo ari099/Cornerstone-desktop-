@@ -27,7 +27,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="17pt"
-                FontFamily="Constantine"
+                FontFamily="Grapple BRK"
                 Foreground="#FF5C87B0"
             />
         </Grid>
@@ -65,24 +65,27 @@
             />
         </Grid>
         <Grid Grid.Row="1">
-            <ListBox x:Name="VersionList"
-                Background="#FF0C1717"
-                Foreground="LightGreen"
-                BorderBrush="{x:Null}"
+            <ComboBox x:Name="VersionList"
                 FontFamily="Segoe UI Semibold"
                 FontSize="15pt"
                 Cursor="Hand"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Margin="7.5">
-                <ListBoxItem Content="kjv" IsSelected="True"/>
-                <ListBoxItem Content="web"/>
-                <ListBoxItem Content="asv"/>
-                <ListBoxItem Content="bbe"/>
-                <ListBoxItem Content="dby"/>
-                <ListBoxItem Content="wbt"/>
-                <ListBoxItem Content="ylt"/>
-            </ListBox>
+                Margin="7.5"
+                Background="{x:Null}"
+                Foreground="Green" BorderBrush="{x:Null}">
+                <ComboBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF212731" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightGreen" />
+                </ComboBox.Resources>
+                <ComboBoxItem Content="kjv" IsSelected="True"/>
+                <ComboBoxItem Content="web"/>
+                <ComboBoxItem Content="asv"/>
+                <ComboBoxItem Content="bbe"/>
+                <ComboBoxItem Content="dby"/>
+                <ComboBoxItem Content="wbt"/>
+                <ComboBoxItem Content="ylt"/>
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -104,117 +107,122 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Label Content="Book:"
-                FontFamily="Constantine"
+                FontFamily="Grapple BRK"
                 FontSize="15pt"
                 HorizontalAlignment="Center"
                 Margin="2.5"
                 VerticalAlignment="Center"
                 Foreground="LightGreen" Background="{x:Null}" />
-            <ListBox x:Name="Books"
+            <ComboBox x:Name="Books"
                 Grid.Row="1"
                 FontFamily="Segoe UI Semibold"
                 FontSize="12pt"
                 Cursor="Hand"
+                SelectionChanged="Books_Selected"
                 Height="30"
                 VerticalAlignment="Stretch"
-                Background="#FF212731"
-                Foreground="LightGreen" BorderBrush="{x:Null}">
-                <ListBoxItem Content="Genesis" IsSelected="True"/>
-                <ListBoxItem Content="Exodus"/>
-                <ListBoxItem Content="Leviticus"/>
-                <ListBoxItem Content="Numbers"/>
-                <ListBoxItem Content="Deuteronomy"/>
-                <ListBoxItem Content="Joshua"/>
-                <ListBoxItem Content="Judges"/>
-                <ListBoxItem Content="Ruth"/>
-                <ListBoxItem Content="1 Samuel"/>
-                <ListBoxItem Content="2 Samuel"/>
-                <ListBoxItem Content="1 Kings"/>
-                <ListBoxItem Content="2 Kings"/>
-                <ListBoxItem Content="1 Chronicles"/>
-                <ListBoxItem Content="2 Chronicles"/>
-                <ListBoxItem Content="Ezra"/>
-                <ListBoxItem Content="Nehemiah"/>
-                <ListBoxItem Content="Esther"/>
-                <ListBoxItem Content="Job"/>
-                <ListBoxItem Content="Psalms"/>
-                <ListBoxItem Content="Proverbs"/>
-                <ListBoxItem Content="Ecclesiastes"/>
-                <ListBoxItem Content="Song of Solomon"/>
-                <ListBoxItem Content="Isaiah"/>
-                <ListBoxItem Content="Jeremiah"/>
-                <ListBoxItem Content="Lamentations"/>
-                <ListBoxItem Content="Ezekiel"/>
-                <ListBoxItem Content="Daniel"/>
-                <ListBoxItem Content="Hosea"/>
-                <ListBoxItem Content="Joel"/>
-                <ListBoxItem Content="Amos"/>
-                <ListBoxItem Content="Obadiah"/>
-                <ListBoxItem Content="Jonah"/>
-                <ListBoxItem Content="Micah"/>
-                <ListBoxItem Content="Nahum"/>
-                <ListBoxItem Content="Habakkuk"/>
-                <ListBoxItem Content="Zephaniah"/>
-                <ListBoxItem Content="Haggai"/>
-                <ListBoxItem Content="Zechariah"/>
-                <ListBoxItem Content="Malachi"/>
-                <ListBoxItem Content="Matthew"/>
-                <ListBoxItem Content="Mark"/>
-                <ListBoxItem Content="Luke"/>
-                <ListBoxItem Content="John"/>
-                <ListBoxItem Content="Acts of the Apostles"/>
-                <ListBoxItem Content="Romans"/>
-                <ListBoxItem Content="1 Corinthians"/>
-                <ListBoxItem Content="2 Corinthians"/>
-                <ListBoxItem Content="Galatians"/>
-                <ListBoxItem Content="Ephesians"/>
-                <ListBoxItem Content="Phillippians"/>
-                <ListBoxItem Content="Colossians"/>
-                <ListBoxItem Content="1 Thessalonians"/>
-                <ListBoxItem Content="2 Thessalonians"/>
-                <ListBoxItem Content="1 Timothy"/>
-                <ListBoxItem Content="2 Timothy"/>
-                <ListBoxItem Content="Titus"/>
-                <ListBoxItem Content="Philemon"/>
-                <ListBoxItem Content="Hebrews"/>
-                <ListBoxItem Content="James"/>
-                <ListBoxItem Content="1 Peter"/>
-                <ListBoxItem Content="2 Peter"/>
-                <ListBoxItem Content="1 John"/>
-                <ListBoxItem Content="2 John"/>
-                <ListBoxItem Content="3 John"/>
-                <ListBoxItem Content="Jude"/>
-                <ListBoxItem Content="Revelation"/>
-            </ListBox>
+                Background="{x:Null}"
+                Foreground="Green" BorderBrush="{x:Null}">
+                <ComboBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF212731" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightGreen" />
+                </ComboBox.Resources>
+                <ComboBoxItem Content="Genesis"/>
+                <ComboBoxItem Content="Exodus"/>
+                <ComboBoxItem Content="Leviticus"/>
+                <ComboBoxItem Content="Numbers"/>
+                <ComboBoxItem Content="Deuteronomy"/>
+                <ComboBoxItem Content="Joshua"/>
+                <ComboBoxItem Content="Judges"/>
+                <ComboBoxItem Content="Ruth"/>
+                <ComboBoxItem Content="1 Samuel"/>
+                <ComboBoxItem Content="2 Samuel"/>
+                <ComboBoxItem Content="1 Kings"/>
+                <ComboBoxItem Content="2 Kings"/>
+                <ComboBoxItem Content="1 Chronicles"/>
+                <ComboBoxItem Content="2 Chronicles"/>
+                <ComboBoxItem Content="Ezra"/>
+                <ComboBoxItem Content="Nehemiah"/>
+                <ComboBoxItem Content="Esther"/>
+                <ComboBoxItem Content="Job"/>
+                <ComboBoxItem Content="Psalms"/>
+                <ComboBoxItem Content="Proverbs"/>
+                <ComboBoxItem Content="Ecclesiastes"/>
+                <ComboBoxItem Content="Song of Solomon"/>
+                <ComboBoxItem Content="Isaiah"/>
+                <ComboBoxItem Content="Jeremiah"/>
+                <ComboBoxItem Content="Lamentations"/>
+                <ComboBoxItem Content="Ezekiel"/>
+                <ComboBoxItem Content="Daniel"/>
+                <ComboBoxItem Content="Hosea"/>
+                <ComboBoxItem Content="Joel"/>
+                <ComboBoxItem Content="Amos"/>
+                <ComboBoxItem Content="Obadiah"/>
+                <ComboBoxItem Content="Jonah"/>
+                <ComboBoxItem Content="Micah"/>
+                <ComboBoxItem Content="Nahum"/>
+                <ComboBoxItem Content="Habakkuk"/>
+                <ComboBoxItem Content="Zephaniah"/>
+                <ComboBoxItem Content="Haggai"/>
+                <ComboBoxItem Content="Zechariah"/>
+                <ComboBoxItem Content="Malachi"/>
+                <ComboBoxItem Content="Matthew"/>
+                <ComboBoxItem Content="Mark"/>
+                <ComboBoxItem Content="Luke"/>
+                <ComboBoxItem Content="John"/>
+                <ComboBoxItem Content="Acts of the Apostles"/>
+                <ComboBoxItem Content="Romans"/>
+                <ComboBoxItem Content="1 Corinthians"/>
+                <ComboBoxItem Content="2 Corinthians"/>
+                <ComboBoxItem Content="Galatians"/>
+                <ComboBoxItem Content="Ephesians"/>
+                <ComboBoxItem Content="Phillippians"/>
+                <ComboBoxItem Content="Colossians"/>
+                <ComboBoxItem Content="1 Thessalonians"/>
+                <ComboBoxItem Content="2 Thessalonians"/>
+                <ComboBoxItem Content="1 Timothy"/>
+                <ComboBoxItem Content="2 Timothy"/>
+                <ComboBoxItem Content="Titus"/>
+                <ComboBoxItem Content="Philemon"/>
+                <ComboBoxItem Content="Hebrews"/>
+                <ComboBoxItem Content="James"/>
+                <ComboBoxItem Content="1 Peter"/>
+                <ComboBoxItem Content="2 Peter"/>
+                <ComboBoxItem Content="1 John"/>
+                <ComboBoxItem Content="2 John"/>
+                <ComboBoxItem Content="3 John"/>
+                <ComboBoxItem Content="Jude"/>
+                <ComboBoxItem Content="Revelation"/>
+            </ComboBox>
             <Label Content="Chapter:"
                 Grid.Row="2"
-                FontFamily="Constantine"
+                FontFamily="Grapple BRK"
                 Margin="2.5"
                 FontSize="15pt"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Foreground="LightGreen" Background="{x:Null}" />
-            <ListBox x:Name="Chapters"
+            <ComboBox x:Name="Chapters"
                 Grid.Row="3"
                 FontFamily="Segoe UI Semibold"
                 FontSize="12pt"
                 Height="30"
+                SelectionChanged="Chapters_Selected"
                 HorizontalAlignment="Stretch"
                 Cursor="Hand"
                 VerticalAlignment="Stretch"
-                Background="#FF212731"
-                Foreground="LightGreen" BorderBrush="{x:Null}">
-                <ListBoxItem IsEnabled="False">Select Chapter</ListBoxItem>
-            </ListBox>
+                Background="{x:Null}"
+                Foreground="#FF212731" BorderBrush="{x:Null}">
+            </ComboBox>
             <Label Content="Verse:"
                 Grid.Row="4"
-                FontFamily="Constantine"
+                FontFamily="Grapple BRK"
                 Margin="2.5"
                 FontSize="15pt"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Foreground="LightGreen" Background="{x:Null}" />
-            <ListBox x:Name="Verses"
+            <ComboBox x:Name="Verses"
                 Grid.Row="5"
                 FontFamily="Segoe UI Semibold"
                 Cursor="Hand"
@@ -222,10 +230,9 @@
                 Height="30"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Background="#FF212731"
-                Foreground="LightGreen" BorderBrush="{x:Null}">
-                <ListBoxItem IsEnabled="False">Select Verse</ListBoxItem>
-            </ListBox>
+                Background="{x:Null}"
+                Foreground="#FF212731" BorderBrush="{x:Null}">
+            </ComboBox>
             <TextBox x:Name="VerseNote"
                 Grid.Row="6"
                 FontFamily="Segoe UI Semibold"
@@ -238,7 +245,7 @@
             <Button x:Name="SaveVerseNote"
                 Cursor="Hand"
                 Grid.Row="7"
-                FontFamily="Constantine"
+                FontFamily="Grapple BRK"
                 FontSize="20pt"
                 Content="Save Note"
                 Background="LightGreen"

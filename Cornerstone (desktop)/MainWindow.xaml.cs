@@ -20,9 +20,9 @@ namespace Cornerstone__desktop_ {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private Cornerstone bible;
+        private Cornerstone bible = new Cornerstone();
         public MainWindow() {
-            bible = new Cornerstone();
+            //Chapters = new ComboBox();
             InitializeComponent();
         }
 
@@ -65,17 +65,17 @@ namespace Cornerstone__desktop_ {
         }
 
         private void Books_Selected(object sender, RoutedEventArgs e) {
-            string selectedBook = (Books.SelectedItem as ListBoxItem).Content.ToString();
+            string selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
             int limit = bible.GetNumberOfChapters(selectedBook);
-            if(Chapters != null) Chapters.Items.Clear();
+            if (Chapters != null) Chapters.Items.Clear();
             for (int i = 1; i <= limit; i++) Chapters.Items.Add(i);
         }
 
         private void Chapters_Selected(object sender, RoutedEventArgs e) {
-            string selectedBook = (Books.SelectedItem as ListBoxItem).Content.ToString();
-            int selectedChapter = Convert.ToInt32((Chapters.SelectedItem as ListBoxItem).Content.ToString());
-            int limit = bible.GetNumberOfVerses(selectedBook, selectedChapter);
-            if(Verses != null) Verses.Items.Clear();
+            string selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
+            string selectedChapter = Chapters.SelectedItem.ToString();
+            int limit = bible.GetNumberOfVerses(selectedBook, Convert.ToInt32(selectedChapter));
+            if (Verses != null) Verses.Items.Clear();
             for (int i = 1; i <= limit; i++) Verses.Items.Add(i);
         }
     }
