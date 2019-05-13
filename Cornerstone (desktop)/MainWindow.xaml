@@ -212,7 +212,11 @@
                 Cursor="Hand"
                 VerticalAlignment="Stretch"
                 Background="{x:Null}"
-                Foreground="#FF212731" BorderBrush="{x:Null}">
+                Foreground="Green" BorderBrush="{x:Null}">
+                <ComboBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF212731" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightGreen" />
+                </ComboBox.Resources>
             </ComboBox>
             <Label Content="Verse:"
                 Grid.Row="4"
@@ -228,10 +232,15 @@
                 Cursor="Hand"
                 FontSize="12pt"
                 Height="30"
+                SelectionChanged="Lookup"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Background="{x:Null}"
-                Foreground="#FF212731" BorderBrush="{x:Null}">
+                Foreground="Green" BorderBrush="{x:Null}">
+                <ComboBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF212731" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightGreen" />
+                </ComboBox.Resources>
             </ComboBox>
             <TextBox x:Name="VerseNote"
                 Grid.Row="6"

@@ -43,13 +43,16 @@ namespace Cornerstone__desktop_ {
 
         private void SaveVerseNote_Click(object sender, RoutedEventArgs e) {
             // Save note to database....
-            //Cornerstone cs = new Cornerstone();
-            //Debug.Print(cs.GetNumberOfChapters(1).ToString());
-            //Debug.Print(cs.GetNumberOfVerses(1, 1).ToString());
-            //Debug.Print(cs.GetVerse("01001001"));
-            //Debug.Print(cs.GetVerse(1,1,1));
-            //foreach(var verse in cs.GetFullChapter(1, 1))
-            //    Debug.Print(verse.ToString());
+            Cornerstone cs = new Cornerstone();
+            Debug.Print(cs.GetNumberOfChapters(1).ToString());
+            Debug.Print(cs.GetNumberOfVerses(1, 1).ToString());
+            Debug.Print(cs.GetVerse("01001001"));
+            Debug.Print(cs.GetVerse(1, 1, 1));
+            foreach (var verse in cs.GetFullChapter(1, 1))
+                Debug.Print(verse.ToString());
+            Debug.Print(string.Empty);
+            foreach (var verse in cs.GetFullChapter("Genesis", 1))
+                Debug.Print(verse.ToString());
         }
 
         private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -68,15 +71,66 @@ namespace Cornerstone__desktop_ {
             string selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
             int limit = bible.GetNumberOfChapters(selectedBook);
             if (Chapters != null) Chapters.Items.Clear();
-            for (int i = 1; i <= limit; i++) Chapters.Items.Add(i);
+            for (int i = 1; i <= limit; i++) {
+                ComboBoxItem n = new ComboBoxItem();
+                n.Content = i;
+                Chapters.Items.Add(n);
+            }
+
+            // Lookup chapter 1 of whatever book is selected....
+            Lookup(sender, e);
         }
 
         private void Chapters_Selected(object sender, RoutedEventArgs e) {
             string selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
-            string selectedChapter = Chapters.SelectedItem.ToString();
+            string selectedChapter = (Chapters.SelectedItem as ComboBoxItem).Content.ToString();
             int limit = bible.GetNumberOfVerses(selectedBook, Convert.ToInt32(selectedChapter));
             if (Verses != null) Verses.Items.Clear();
-            for (int i = 1; i <= limit; i++) Verses.Items.Add(i);
+            for (int i = 1; i <= limit; i++) {
+                ComboBoxItem n = new ComboBoxItem();
+                n.Content = i;
+                Verses.Items.Add(n);
+            }
+
+            // Lookup chapter selected of the book selected
+            Lookup(sender, e);
+        }
+
+        /// <summary>
+        /// Verse lookup event handler...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Lookup(object sender, RoutedEventArgs e) {
+            // complete this method....
+            string selectedBook = string.Empty, selectedChapter = string.Empty, selectedVerse = string.Empty;
+            if (Books.SelectedItem != null)
+                selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
+            if (Chapters.SelectedItem != null)
+                selectedChapter = (Chapters.SelectedItem as ComboBoxItem).Content.ToString();
+            if (Verses.SelectedItem != null)
+                selectedVerse = (Verses.SelectedItem as ComboBoxItem).Content.ToString();
+
+            if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter)) {
+                ScriptureText.Blocks.Clear();
+                foreach (string verse in bible.GetFullChapter(selectedBook, Convert.ToInt32(selectedChapter))) {
+                    Paragraph verseText = new Paragraph(new Run(verse));
+                    verseText.FontSize = 20;
+                    verseText.Foreground = new SolidColorBrush(Colors.Green);
+                    verseText.FontFamily = new FontFamily("Segoe UI Semibold");
+                    ScriptureText.Blocks.Add(verseText);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter) && !string.IsNullOrEmpty(selectedVerse)) {
+                ScriptureText.Blocks.Clear();
+                string v = bible.GetVerse(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
+                Paragraph verseText = new Paragraph(new Run(v));
+                verseText.FontSize = 20;
+                verseText.Foreground = new SolidColorBrush(Colors.Green);
+                verseText.FontFamily = new FontFamily("Segoe UI Semibold");
+                ScriptureText.Blocks.Add(verseText);
+            }
         }
     }
 }

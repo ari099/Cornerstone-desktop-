@@ -98,7 +98,7 @@ namespace Cornerstone__desktop_.Custom {
         }
         #endregion
 
-        #region Bible Methods (dev)
+        #region Bible Methods
         /// <summary>
         /// Get Bible book name from the book number
         /// </summary>
@@ -113,8 +113,9 @@ namespace Cornerstone__desktop_.Custom {
         /// </summary>
         /// <param name="book_name"></param>
         /// <returns></returns>
-        public int GetBookIndex(string book_name) {
-            return books.IndexOf(book_name) + 1;
+        public int GetBookNumber(string book_name) {
+            int index = books.IndexOf(book_name);
+            return index + 1;
         }
 
         /// <summary>
@@ -147,8 +148,9 @@ namespace Cornerstone__desktop_.Custom {
         public int GetNumberOfChapters(string book_name) {
             List<int> chapter_numbers = new List<int>();
             XmlElement root = bible.DocumentElement;
+            int book_no = GetBookNumber(book_name);
             var book = root.ChildNodes.Cast<XmlNode>()
-                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == GetBookIndex(book_name))
+                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no)
                 .Select(x => x)
                 .ToList();
             book.ForEach(x => {
@@ -193,8 +195,9 @@ namespace Cornerstone__desktop_.Custom {
         public int GetNumberOfVerses(string book_name, int chapter_no) {
             List<int> verse_numbers = new List<int>();
             XmlElement root = bible.DocumentElement;
+            int book_no = GetBookNumber(book_name);
             var book = root.ChildNodes.Cast<XmlNode>()
-                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == GetBookIndex(book_name) && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
+                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();
             book.ForEach(x => {
@@ -260,7 +263,8 @@ namespace Cornerstone__desktop_.Custom {
         /// <param name="verse_no"></param>
         /// <returns></returns>
         public string GetVerse(string book_name, int chapter_no, int verse_no) {
-            string code = GetBookIndex(book_name).ToString("00") +
+            int book_no = GetBookNumber(book_name);
+            string code = book_no.ToString("00") +
                 chapter_no.ToString("000") +
                 verse_no.ToString("000");
 
@@ -309,8 +313,9 @@ namespace Cornerstone__desktop_.Custom {
         public string[] GetFullChapter(string book_name, int chapter_no) {
             List<string> verses = new List<string>();
             XmlElement root = bible.DocumentElement;
+            int book_no = GetBookNumber(book_name);
             var book = root.ChildNodes.Cast<XmlNode>()
-                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == GetBookIndex(book_name) && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
+                .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();
             book.ForEach(x => {
