@@ -68,28 +68,34 @@ namespace Cornerstone__desktop_ {
         }
 
         private void Books_Selected(object sender, RoutedEventArgs e) {
+            ScriptureText.Blocks.Clear();
+            Chapters.Items.Clear();
             string selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
             int limit = bible.GetNumberOfChapters(selectedBook);
-            if (Chapters != null) Chapters.Items.Clear();
             for (int i = 1; i <= limit; i++) {
-                ComboBoxItem n = new ComboBoxItem();
-                n.Content = i;
-                Chapters.Items.Add(n);
+                ComboBoxItem chapter_n = new ComboBoxItem();
+                chapter_n.Content = i;
+                Chapters.Items.Add(chapter_n);
             }
+
+            // Select the first chapter of the book selected....
+            Chapters.SelectedIndex = 0;
 
             // Lookup chapter 1 of whatever book is selected....
             Lookup(sender, e);
         }
 
         private void Chapters_Selected(object sender, RoutedEventArgs e) {
+            Verses.Items.Clear();
             string selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
-            string selectedChapter = (Chapters.SelectedItem as ComboBoxItem).Content.ToString();
-            int limit = bible.GetNumberOfVerses(selectedBook, Convert.ToInt32(selectedChapter));
-            if (Verses != null) Verses.Items.Clear();
-            for (int i = 1; i <= limit; i++) {
-                ComboBoxItem n = new ComboBoxItem();
-                n.Content = i;
-                Verses.Items.Add(n);
+            if(Chapters.SelectedItem != null) {
+                string selectedChapter = (Chapters.SelectedItem as ComboBoxItem).Content.ToString();
+                int limit = bible.GetNumberOfVerses(selectedBook, Convert.ToInt32(selectedChapter));
+                for (int i = 1; i <= limit; i++) {
+                    ComboBoxItem verse_n = new ComboBoxItem();
+                    verse_n.Content = i;
+                    Verses.Items.Add(verse_n);
+                }
             }
 
             // Lookup chapter selected of the book selected
