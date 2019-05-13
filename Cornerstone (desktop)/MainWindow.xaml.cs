@@ -110,11 +110,11 @@ namespace Cornerstone__desktop_ {
         private void Lookup(object sender, RoutedEventArgs e) {
             // complete this method....
             string selectedBook = string.Empty, selectedChapter = string.Empty, selectedVerse = string.Empty;
-            if (Books.SelectedItem != null)
+            if (Books != null && Books.SelectedItem != null)
                 selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
-            if (Chapters.SelectedItem != null)
+            if (Chapters != null && Chapters.SelectedItem != null)
                 selectedChapter = (Chapters.SelectedItem as ComboBoxItem).Content.ToString();
-            if (Verses.SelectedItem != null)
+            if (Verses != null && Verses.SelectedItem != null)
                 selectedVerse = (Verses.SelectedItem as ComboBoxItem).Content.ToString();
 
             if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter)) {
@@ -137,6 +137,12 @@ namespace Cornerstone__desktop_ {
                 verseText.FontFamily = new FontFamily("Segoe UI Semibold");
                 ScriptureText.Blocks.Add(verseText);
             }
+        }
+
+        private void VersionList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            // Change the bible version....
+            bible = new Cornerstone((VersionList.SelectedItem as ComboBoxItem).Content.ToString());
+            Lookup(this, e);
         }
     }
 }

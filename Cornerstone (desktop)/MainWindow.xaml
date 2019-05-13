@@ -71,6 +71,7 @@
                 Cursor="Hand"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
+                SelectionChanged="VersionList_SelectionChanged"
                 Margin="7.5"
                 Background="{x:Null}"
                 Foreground="Green" BorderBrush="{x:Null}">
