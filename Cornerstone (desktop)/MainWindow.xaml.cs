@@ -116,7 +116,7 @@ namespace Cornerstone__desktop_ {
                 foreach (string verse in bible.GetFullChapter(selectedBook, Convert.ToInt32(selectedChapter))) {
                     Paragraph verseText = new Paragraph(new Run(verse));
                     verseText.FontSize = 20;
-                    verseText.Foreground = new SolidColorBrush(Colors.Green);
+                    verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
                     verseText.FontFamily = new FontFamily("Segoe UI Semibold");
                     ScriptureText.Blocks.Add(verseText);
                 }
@@ -127,7 +127,7 @@ namespace Cornerstone__desktop_ {
                 string v = bible.GetVerse(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
                 Paragraph verseText = new Paragraph(new Run(v));
                 verseText.FontSize = 20;
-                verseText.Foreground = new SolidColorBrush(Colors.Green);
+                verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
                 verseText.FontFamily = new FontFamily("Segoe UI Semibold");
                 ScriptureText.Blocks.Add(verseText);
             }

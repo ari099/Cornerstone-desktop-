@@ -88,12 +88,13 @@
             </ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
-            <FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            <FlowDocumentScrollViewer xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                Foreground="LightGreen">
+                Foreground="LightGreen"
+                IsToolBarVisible="True" Zoom="80" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <FlowDocument x:Name="ScriptureText"
                     Background="#FF0C1717" Foreground="LightGreen" />
-            </FlowDocumentReader>
+            </FlowDocumentScrollViewer>
         </Grid>
         <Grid Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Background="#FF1A1E26">
             <Grid.RowDefinitions>
