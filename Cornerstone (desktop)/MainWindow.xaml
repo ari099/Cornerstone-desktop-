@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cornerstone__desktop_"
         mc:Ignorable="d"
+        MinHeight="550"
+        MinWidth="800"
         Title="Cornerstone" Height="550" Width="800" WindowStyle="None" Background="#FF121518" Foreground="White">
     <Grid>
         <Grid.RowDefinitions>
@@ -250,6 +252,7 @@
                 Cursor="IBeam"
                 FontSize="12pt"
                 Margin="10"
+                IsEnabled="False"
                 Padding="10"
                 Background="#FF0B121A"
                 Foreground="LightGreen" BorderBrush="LightGreen" />
@@ -262,6 +265,7 @@
                 Background="LightGreen"
                 Foreground="#FF1F2E3A"
                 Margin="10"
+                IsEnabled="False"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch" BorderBrush="{x:Null}" Click="SaveVerseNote_Click" />
         </Grid>

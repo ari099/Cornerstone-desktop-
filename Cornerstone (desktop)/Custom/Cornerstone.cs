@@ -69,12 +69,40 @@ namespace Cornerstone__desktop_.Custom {
                 SQLiteCommand cmd = new SQLiteCommand(query);
                 rows = cmd.ExecuteNonQuery();
             } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Debug.Print(ex.Message);
             } finally {
                 conn.Close();
             }
 
             return rows;
+        }
+
+        /// <summary>
+        /// Query the Cornerstone database
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="standin"></param>
+        /// <returns></returns>
+        private string[] QueryDatabase(string query, int standin = 0) {
+            SQLiteConnection conn = new SQLiteConnection("DataSource=.\\cornerstone.sqlite3;Version=3");
+            List<string> results = new List<string>();
+            try {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(query)) {
+                    using (SQLiteDataReader rdr = cmd.ExecuteReader()) {
+                        while (rdr.Read()) {
+                            results.Add(rdr.GetString(1));
+                        }
+                    }
+                }
+                //rows = cmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                Debug.Print(ex.Message);
+            } finally {
+                conn.Close();
+            }
+
+            return results.ToArray();
         }
 
         #region Note Methods
@@ -95,6 +123,12 @@ namespace Cornerstone__desktop_.Custom {
         public void RemoveNote(string verse_code) {
             string query = string.Format("DELETE FROM Note WHERE code = {0}", verse_code);
             QueryDatabase(query);
+        }
+
+        public string GetNote(string verse_code) {
+            string query = string.Format("SELECT * FROM Note WHERE code = {0}", verse_code);
+            string[] notes = QueryDatabase(query, 0);
+            return notes[0];
         }
         #endregion
 
@@ -127,7 +161,7 @@ namespace Cornerstone__desktop_.Custom {
         public int GetNumberOfChapters(int book_no) {
             List<int> chapter_numbers = new List<int>();
             XmlElement root = bible.DocumentElement;
-            var book = root.ChildNodes.Cast<XmlNode>()
+            List<XmlNode> book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no)
                 .Select(x => x)
                 .ToList();
@@ -149,7 +183,7 @@ namespace Cornerstone__desktop_.Custom {
             List<int> chapter_numbers = new List<int>();
             XmlElement root = bible.DocumentElement;
             int book_no = GetBookNumber(book_name);
-            var book = root.ChildNodes.Cast<XmlNode>()
+            List<XmlNode> book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no)
                 .Select(x => x)
                 .ToList();
@@ -172,7 +206,7 @@ namespace Cornerstone__desktop_.Custom {
         public int GetNumberOfVerses(int book_no, int chapter_no) {
             List<int> verse_numbers = new List<int>();
             XmlElement root = bible.DocumentElement;
-            var book = root.ChildNodes.Cast<XmlNode>()
+            List<XmlNode> book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();
@@ -196,7 +230,7 @@ namespace Cornerstone__desktop_.Custom {
             List<int> verse_numbers = new List<int>();
             XmlElement root = bible.DocumentElement;
             int book_no = GetBookNumber(book_name);
-            var book = root.ChildNodes.Cast<XmlNode>()
+            List<XmlNode> book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();
@@ -217,7 +251,7 @@ namespace Cornerstone__desktop_.Custom {
         public string GetVerse(string code) {
             XmlElement root = bible.DocumentElement;
             string verse_text = null;
-            var book = root.ChildNodes.Cast<XmlNode>()
+            List<XmlNode> book = root.ChildNodes.Cast<XmlNode>()
                 .Where(verse => verse.FirstChild.InnerText == code)
                 .Select(x => x)
                 .ToList();
@@ -291,7 +325,7 @@ namespace Cornerstone__desktop_.Custom {
         public string[] GetFullChapter(int book_no, int chapter_no) {
             List<string> verses = new List<string>();
             XmlElement root = bible.DocumentElement;
-            var book = root.ChildNodes.Cast<XmlNode>()
+            List<XmlNode> book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();
@@ -314,7 +348,7 @@ namespace Cornerstone__desktop_.Custom {
             List<string> verses = new List<string>();
             XmlElement root = bible.DocumentElement;
             int book_no = GetBookNumber(book_name);
-            var book = root.ChildNodes.Cast<XmlNode>()
+            List<XmlNode> book = root.ChildNodes.Cast<XmlNode>()
                 .Where(n => Convert.ToInt32(n.ChildNodes.Item(1).InnerText) == book_no && Convert.ToInt32(n.ChildNodes.Item(2).InnerText) == chapter_no)
                 .Select(x => x)
                 .ToList();

@@ -42,17 +42,25 @@ namespace Cornerstone__desktop_ {
         }
 
         private void SaveVerseNote_Click(object sender, RoutedEventArgs e) {
+            // Getting the verse code....
+            string verse_code = bible.GetBookNumber((Books.SelectedItem as ComboBoxItem).Content.ToString()).ToString("00") +
+                Convert.ToInt32((Chapters.SelectedItem as ComboBoxItem).Content.ToString()).ToString("000") +
+                Convert.ToInt32((Verses.SelectedItem as ComboBoxItem).Content.ToString()).ToString("000");
+
             // Save note to database....
-            Cornerstone cs = new Cornerstone();
-            Debug.Print(cs.GetNumberOfChapters(1).ToString());
-            Debug.Print(cs.GetNumberOfVerses(1, 1).ToString());
-            Debug.Print(cs.GetVerse("01001001"));
-            Debug.Print(cs.GetVerse(1, 1, 1));
-            foreach (var verse in cs.GetFullChapter(1, 1))
-                Debug.Print(verse.ToString());
-            Debug.Print(string.Empty);
-            foreach (var verse in cs.GetFullChapter("Genesis", 1))
-                Debug.Print(verse.ToString());
+            string note = VerseNote.Text;
+            bible.AddNote(verse_code, note);
+
+            //Cornerstone cs = new Cornerstone();
+            //Debug.Print(cs.GetNumberOfChapters(1).ToString());
+            //Debug.Print(cs.GetNumberOfVerses(1, 1).ToString());
+            //Debug.Print(cs.GetVerse("01001001"));
+            //Debug.Print(cs.GetVerse(1, 1, 1));
+            //foreach (var verse in cs.GetFullChapter(1, 1))
+            //    Debug.Print(verse.ToString());
+            //Debug.Print(string.Empty);
+            //foreach (var verse in cs.GetFullChapter("Genesis", 1))
+            //    Debug.Print(verse.ToString());
         }
 
         private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -121,22 +129,67 @@ namespace Cornerstone__desktop_ {
                 ScriptureText.Blocks.Clear();
                 foreach (string verse in bible.GetFullChapter(selectedBook, Convert.ToInt32(selectedChapter))) {
                     Paragraph verseText = new Paragraph(new Run(verse));
+                    verseText.Cursor = Cursors.Hand;
                     verseText.FontSize = 20;
                     verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
                     verseText.FontFamily = new FontFamily("Segoe UI Semibold");
+                    verseText.Margin = new Thickness(5.0);
+                    verseText.Padding = new Thickness(5.0);
+                    verseText.MouseEnter += new MouseEventHandler(VerseMouseOver);
+                    verseText.MouseLeave += new MouseEventHandler(VerseMouseOut);
+                    verseText.MouseDown += new MouseButtonEventHandler(VerseClick);
                     ScriptureText.Blocks.Add(verseText);
                 }
             }
 
             if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter) && !string.IsNullOrEmpty(selectedVerse)) {
                 ScriptureText.Blocks.Clear();
+                VerseNote.IsEnabled = true;
+                SaveVerseNote.IsEnabled = true;
                 string v = bible.GetVerse(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
                 Paragraph verseText = new Paragraph(new Run(v));
+                verseText.Cursor = Cursors.Hand;
                 verseText.FontSize = 20;
                 verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
                 verseText.FontFamily = new FontFamily("Segoe UI Semibold");
+                verseText.Margin = new Thickness(5.0);
+                verseText.Padding = new Thickness(5.0);
+                verseText.MouseEnter += new MouseEventHandler(VerseMouseOver);
+                verseText.MouseLeave += new MouseEventHandler(VerseMouseOut);
+                verseText.MouseDown += new MouseButtonEventHandler(VerseClick);
                 ScriptureText.Blocks.Add(verseText);
             }
+        }
+
+        private void VerseClick(object sender, MouseButtonEventArgs e) {
+            //// complete this method....
+            //string selectedBook = string.Empty, selectedChapter = string.Empty, selectedVerse = string.Empty;
+            //if (Books != null && Books.SelectedItem != null)
+            //    selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
+            //if (Chapters != null && Chapters.SelectedItem != null)
+            //    selectedChapter = (Chapters.SelectedItem as ComboBoxItem).Content.ToString();
+            //if (Verses != null && Verses.SelectedItem != null)
+            //    selectedVerse = (Verses.SelectedItem as ComboBoxItem).Content.ToString();
+
+            //// Getting the verse code....
+            //if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter) && !string.IsNullOrEmpty(selectedVerse)) {
+            //    string verse_code = bible.GetBookNumber((Books.SelectedItem as ComboBoxItem).Content.ToString()).ToString("00") +
+            //        Convert.ToInt32((Chapters.SelectedItem as ComboBoxItem).Content.ToString()).ToString("000") +
+            //        Convert.ToInt32((Verses.SelectedItem as ComboBoxItem).Content.ToString()).ToString("000");
+            //    VerseNote.Text = bible.GetNote(verse_code);
+            //}
+        }
+
+        private void VerseMouseOver(object sender, MouseEventArgs e) {
+            Paragraph verseText = sender as Paragraph;
+            verseText.Background = new SolidColorBrush(Colors.LightGreen);
+            verseText.Foreground = ScriptureText.Background;
+        }
+
+        private void VerseMouseOut(object sender, MouseEventArgs e) {
+            Paragraph verseText = sender as Paragraph;
+            verseText.Background = null;
+            verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
         }
 
         private void VersionList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
