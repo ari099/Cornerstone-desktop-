@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>cornerstone_logo_2__igj_icon.ico</ApplicationIcon>
+    <ApplicationIcon>cornerstone_logo_2__Xgr_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -145,6 +145,7 @@
   <ItemGroup>
     <Content Include="Bible\bible-mysql.sql" />
     <Content Include="Bible\cross_reference-mysql.sql" />
+    <Resource Include="cornerstone_logo_2__Xgr_icon.ico" />
     <Resource Include="cornerstone_logo_2__igj_icon.ico" />
     <Resource Include="cornerstone_logo_FxA_icon.ico" />
     <Resource Include="cornerstone_logo_qlY_icon.ico" />
