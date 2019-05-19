@@ -55,6 +55,7 @@ namespace Cornerstone__desktop_.Custom {
             "2 John", "3 John", "Jude", "Revelation"
         };
 
+        #region Database Functions
         /// <summary>
         /// Query the Cornerstone database
         /// (cornerstone.sqlite3)
@@ -104,6 +105,7 @@ namespace Cornerstone__desktop_.Custom {
 
             return results.ToArray();
         }
+        #endregion
 
         #region Note Methods
         /// <summary>
@@ -359,6 +361,54 @@ namespace Cornerstone__desktop_.Custom {
 
             return verses.ToArray();
         }
+
+        #region Specific Verse Methods
+        /// <summary>
+        /// Get verse code
+        /// </summary>
+        /// <param name="book_name"></param>
+        /// <param name="chapter_no"></param>
+        /// <param name="verse_no"></param>
+        /// <returns></returns>
+        public string GetVerseCode(string book_name, int chapter_no, int verse_no) {
+            int book_no = GetBookNumber(book_name);
+            string code = book_no.ToString("00") +
+                chapter_no.ToString("000") +
+                verse_no.ToString("000");
+            return code;
+        }
+
+        /// <summary>
+        /// Get verse code
+        /// </summary>
+        /// <param name="book_no"></param>
+        /// <param name="chapter_no"></param>
+        /// <param name="verse_no"></param>
+        /// <returns></returns>
+        public string GetVerseCode(int book_no, int chapter_no, int verse_no) {
+            string code = book_no.ToString("00") +
+                chapter_no.ToString("000") +
+                verse_no.ToString("000");
+            return code;
+        }
+
+        /// <summary>
+        /// Highlight a verse on the FlowDocument
+        /// </summary>
+        /// <param name="verse_code"></param>
+        public void HighlightVerse(string verse_code) {
+            // complete this method....
+        }
+
+        /// <summary>
+        /// Remove verse highlight on the FlowDocument
+        /// </summary>
+        /// <param name="verse_code"></param>
+        public void RemoveHighlightVerse(string verse_code) {
+            // complete this method....
+        }
+        #endregion
+
         #endregion
     }
 }

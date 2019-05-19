@@ -68,7 +68,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <ComboBox x:Name="VersionList"
-                FontFamily="Segoe UI Semibold"
+                FontFamily="Open Serif Book"
                 FontSize="15pt"
                 Cursor="Hand"
                 HorizontalAlignment="Stretch"
@@ -94,7 +94,7 @@
             <FlowDocumentScrollViewer xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 Foreground="LightGreen"
-                IsToolBarVisible="True" Zoom="80" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                IsToolBarVisible="True" Zoom="80" ScrollViewer.VerticalScrollBarVisibility="Auto" FontFamily="Open Serif Book">
                 <FlowDocument x:Name="ScriptureText"
                     Background="#FF0C1717" Foreground="LightGreen" />
             </FlowDocumentScrollViewer>
@@ -119,7 +119,7 @@
                 Foreground="LightGreen" Background="{x:Null}" />
             <ComboBox x:Name="Books"
                 Grid.Row="1"
-                FontFamily="Segoe UI Semibold"
+                FontFamily="Open Serif Book"
                 FontSize="12pt"
                 Cursor="Hand"
                 SelectionChanged="Books_Selected"
@@ -208,7 +208,7 @@
                 Foreground="LightGreen" Background="{x:Null}" />
             <ComboBox x:Name="Chapters"
                 Grid.Row="3"
-                FontFamily="Segoe UI Semibold"
+                FontFamily="Open Serif Book"
                 FontSize="12pt"
                 Height="30"
                 SelectionChanged="Chapters_Selected"
@@ -232,7 +232,7 @@
                 Foreground="LightGreen" Background="{x:Null}" />
             <ComboBox x:Name="Verses"
                 Grid.Row="5"
-                FontFamily="Segoe UI Semibold"
+                FontFamily="Open Serif Book"
                 Cursor="Hand"
                 FontSize="12pt"
                 Height="30"
@@ -248,7 +248,7 @@
             </ComboBox>
             <TextBox x:Name="VerseNote"
                 Grid.Row="6"
-                FontFamily="Segoe UI Semibold"
+                FontFamily="Open Serif Book"
                 Cursor="IBeam"
                 FontSize="12pt"
                 Margin="10"

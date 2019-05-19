@@ -63,7 +63,7 @@ namespace Cornerstone__desktop_ {
             //    Debug.Print(verse.ToString());
         }
 
-        private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {
+        private void StyleTopBar_MouseDown(object sender, MouseButtonEventArgs e) {                                                                                                                                                                                     
             // Drag window by top styled bar....
             DragMove();
         }
@@ -127,18 +127,21 @@ namespace Cornerstone__desktop_ {
 
             if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter)) {
                 ScriptureText.Blocks.Clear();
+                int verseCount = 1; // Keep count of verses....
                 foreach (string verse in bible.GetFullChapter(selectedBook, Convert.ToInt32(selectedChapter))) {
                     Paragraph verseText = new Paragraph(new Run(verse));
+                    verseText.Name = "V" + bible.GetVerseCode(selectedBook, Convert.ToInt32(selectedChapter), verseCount);
                     verseText.Cursor = Cursors.Hand;
                     verseText.FontSize = 20;
                     verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
-                    verseText.FontFamily = new FontFamily("Segoe UI Semibold");
+                    verseText.FontFamily = new FontFamily("Open Serif Book");
                     verseText.Margin = new Thickness(5.0);
                     verseText.Padding = new Thickness(5.0);
                     verseText.MouseEnter += new MouseEventHandler(VerseMouseOver);
                     verseText.MouseLeave += new MouseEventHandler(VerseMouseOut);
                     verseText.MouseDown += new MouseButtonEventHandler(VerseClick);
                     ScriptureText.Blocks.Add(verseText);
+                    verseCount++;
                 }
             }
 
@@ -148,10 +151,11 @@ namespace Cornerstone__desktop_ {
                 SaveVerseNote.IsEnabled = true;
                 string v = bible.GetVerse(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
                 Paragraph verseText = new Paragraph(new Run(v));
+                verseText.Name = "V" + bible.GetVerseCode(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
                 verseText.Cursor = Cursors.Hand;
                 verseText.FontSize = 20;
                 verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
-                verseText.FontFamily = new FontFamily("Segoe UI Semibold");
+                verseText.FontFamily = new FontFamily("Open Serif Book");
                 verseText.Margin = new Thickness(5.0);
                 verseText.Padding = new Thickness(5.0);
                 verseText.MouseEnter += new MouseEventHandler(VerseMouseOver);
@@ -182,14 +186,14 @@ namespace Cornerstone__desktop_ {
 
         private void VerseMouseOver(object sender, MouseEventArgs e) {
             Paragraph verseText = sender as Paragraph;
-            verseText.Background = new SolidColorBrush(Colors.LightGreen);
-            verseText.Foreground = ScriptureText.Background;
+            verseText.Background = new SolidColorBrush(Color.FromRgb(Convert.ToByte(41), Convert.ToByte(47), Convert.ToByte(51)));
+            //verseText.Foreground = ScriptureText.Background;
         }
 
         private void VerseMouseOut(object sender, MouseEventArgs e) {
             Paragraph verseText = sender as Paragraph;
             verseText.Background = null;
-            verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
+            //verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
         }
 
         private void VersionList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
