@@ -48,8 +48,8 @@ namespace Cornerstone__desktop_ {
                 Convert.ToInt32((Verses.SelectedItem as ComboBoxItem).Content.ToString()).ToString("000");
 
             // Save note to database....
-            string note = VerseNote.Text;
-            bible.AddNote(verse_code, note);
+            //string note = VerseNote.Text;
+            //bible.AddNote(verse_code, note);
 
             //Cornerstone cs = new Cornerstone();
             //Debug.Print(cs.GetNumberOfChapters(1).ToString());
@@ -147,8 +147,8 @@ namespace Cornerstone__desktop_ {
 
             if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter) && !string.IsNullOrEmpty(selectedVerse)) {
                 ScriptureText.Blocks.Clear();
-                VerseNote.IsEnabled = true;
-                SaveVerseNote.IsEnabled = true;
+                //VerseNote.IsEnabled = true;
+                //SaveVerseNote.IsEnabled = true;
                 string v = bible.GetVerse(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
                 Paragraph verseText = new Paragraph(new Run(v));
                 verseText.Name = "V" + bible.GetVerseCode(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
@@ -162,26 +162,15 @@ namespace Cornerstone__desktop_ {
                 verseText.MouseLeave += new MouseEventHandler(VerseMouseOut);
                 verseText.MouseDown += new MouseButtonEventHandler(VerseClick);
                 ScriptureText.Blocks.Add(verseText);
+
+                // Get the note saved in the database....
+                //string code = bible.GetVerseCode(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
+                //VerseNote.Text = bible.GetNote(code);
             }
         }
 
         private void VerseClick(object sender, MouseButtonEventArgs e) {
-            //// complete this method....
-            //string selectedBook = string.Empty, selectedChapter = string.Empty, selectedVerse = string.Empty;
-            //if (Books != null && Books.SelectedItem != null)
-            //    selectedBook = (Books.SelectedItem as ComboBoxItem).Content.ToString();
-            //if (Chapters != null && Chapters.SelectedItem != null)
-            //    selectedChapter = (Chapters.SelectedItem as ComboBoxItem).Content.ToString();
-            //if (Verses != null && Verses.SelectedItem != null)
-            //    selectedVerse = (Verses.SelectedItem as ComboBoxItem).Content.ToString();
-
-            //// Getting the verse code....
-            //if (!string.IsNullOrEmpty(selectedBook) && !string.IsNullOrEmpty(selectedChapter) && !string.IsNullOrEmpty(selectedVerse)) {
-            //    string verse_code = bible.GetBookNumber((Books.SelectedItem as ComboBoxItem).Content.ToString()).ToString("00") +
-            //        Convert.ToInt32((Chapters.SelectedItem as ComboBoxItem).Content.ToString()).ToString("000") +
-            //        Convert.ToInt32((Verses.SelectedItem as ComboBoxItem).Content.ToString()).ToString("000");
-            //    VerseNote.Text = bible.GetNote(verse_code);
-            //}
+            // Open verse analysis window...
         }
 
         private void VerseMouseOver(object sender, MouseEventArgs e) {

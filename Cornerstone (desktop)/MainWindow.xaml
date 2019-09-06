@@ -107,8 +107,6 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Label Content="Book:"
                 FontFamily="Grapple BRK"
@@ -246,28 +244,6 @@
                     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightGreen" />
                 </ComboBox.Resources>
             </ComboBox>
-            <TextBox x:Name="VerseNote"
-                Grid.Row="6"
-                FontFamily="Open Serif Book"
-                Cursor="IBeam"
-                FontSize="12pt"
-                Margin="10"
-                IsEnabled="False"
-                Padding="10"
-                Background="#FF0B121A"
-                Foreground="LightGreen" BorderBrush="LightGreen" />
-            <Button x:Name="SaveVerseNote"
-                Cursor="Hand"
-                Grid.Row="7"
-                FontFamily="Grapple BRK"
-                FontSize="20pt"
-                Content="Save Note"
-                Background="LightGreen"
-                Foreground="#FF1F2E3A"
-                Margin="10"
-                IsEnabled="False"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" BorderBrush="{x:Null}" Click="SaveVerseNote_Click" />
         </Grid>
     </Grid>
 </Window>

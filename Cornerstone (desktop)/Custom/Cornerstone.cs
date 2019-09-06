@@ -114,7 +114,7 @@ namespace Cornerstone__desktop_.Custom {
         /// <param name="verse_code"></param>
         /// <param name="note"></param>
         public void AddNote(string verse_code, string note) {
-            string query = string.Format("INSERT INTO Note (code, note) VALUES ({0}, {1});", verse_code, note);
+            string query = string.Format("INSERT INTO Note (code, note) VALUES ('{0}', '{1}');", verse_code, note);
             QueryDatabase(query);
         }
 
@@ -123,14 +123,20 @@ namespace Cornerstone__desktop_.Custom {
         /// </summary>
         /// <param name="verse_code"></param>
         public void RemoveNote(string verse_code) {
-            string query = string.Format("DELETE FROM Note WHERE code = {0}", verse_code);
+            string query = string.Format("DELETE FROM Note WHERE code = '{0}'", verse_code);
             QueryDatabase(query);
         }
 
+        /// <summary>
+        /// Get verse note from database
+        /// </summary>
+        /// <param name="verse_code"></param>
+        /// <returns></returns>
         public string GetNote(string verse_code) {
-            string query = string.Format("SELECT * FROM Note WHERE code = {0}", verse_code);
+            string query = string.Format("SELECT * FROM Note WHERE code = '{0}'", verse_code);
             string[] notes = QueryDatabase(query, 0);
-            return notes[0];
+            if (notes.Length > 0) return notes[0];
+            else return string.Empty;
         }
         #endregion
 
@@ -407,6 +413,7 @@ namespace Cornerstone__desktop_.Custom {
         public void RemoveHighlightVerse(string verse_code) {
             // complete this method....
         }
+
         #endregion
 
         #endregion
