@@ -83,6 +83,9 @@ namespace Cornerstone__desktop_ {
             for (int i = 1; i <= limit; i++) {
                 ComboBoxItem chapter_n = new ComboBoxItem();
                 chapter_n.Content = i;
+                //chapter_n.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF261704"));
+                chapter_n.Background = new SolidColorBrush(Colors.LightYellow);
+                chapter_n.BorderBrush = null;
                 Chapters.Items.Add(chapter_n);
             }
 
@@ -102,6 +105,9 @@ namespace Cornerstone__desktop_ {
                 for (int i = 1; i <= limit; i++) {
                     ComboBoxItem verse_n = new ComboBoxItem();
                     verse_n.Content = i;
+                    //verse_n.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF261704"));
+                    verse_n.Background = new SolidColorBrush(Colors.LightYellow);
+                    verse_n.BorderBrush = null;
                     Verses.Items.Add(verse_n);
                 }
             }
@@ -133,7 +139,7 @@ namespace Cornerstone__desktop_ {
                     verseText.Name = "V" + bible.GetVerseCode(selectedBook, Convert.ToInt32(selectedChapter), verseCount);
                     verseText.Cursor = Cursors.Hand;
                     verseText.FontSize = 20;
-                    verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
+                    verseText.Foreground = new SolidColorBrush(Colors.LightYellow);
                     verseText.FontFamily = new FontFamily("Open Serif Book");
                     verseText.Margin = new Thickness(5.0);
                     verseText.Padding = new Thickness(5.0);
@@ -154,7 +160,7 @@ namespace Cornerstone__desktop_ {
                 verseText.Name = "V" + bible.GetVerseCode(selectedBook, Convert.ToInt32(selectedChapter), Convert.ToInt32(selectedVerse));
                 verseText.Cursor = Cursors.Hand;
                 verseText.FontSize = 20;
-                verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
+                verseText.Foreground = new SolidColorBrush(Colors.LightYellow);
                 verseText.FontFamily = new FontFamily("Open Serif Book");
                 verseText.Margin = new Thickness(5.0);
                 verseText.Padding = new Thickness(5.0);
@@ -175,7 +181,7 @@ namespace Cornerstone__desktop_ {
 
         private void VerseMouseOver(object sender, MouseEventArgs e) {
             Paragraph verseText = sender as Paragraph;
-            verseText.Background = new SolidColorBrush(Color.FromRgb(Convert.ToByte(41), Convert.ToByte(47), Convert.ToByte(51)));
+            verseText.Background = new SolidColorBrush(Colors.LightYellow);
             //verseText.Foreground = ScriptureText.Background;
         }
 
@@ -189,6 +195,14 @@ namespace Cornerstone__desktop_ {
             // Change the bible version....
             bible = new Cornerstone((VersionList.SelectedItem as ComboBoxItem).Content.ToString());
             Lookup(this, e);
+        }
+
+        private void LeftChapterSwitch_Click(object sender, RoutedEventArgs e) {
+            // complete this event handler....
+        }
+
+        private void RightChapterSwitch_Click(object sender, RoutedEventArgs e) {
+            // complete this event handler....
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cornerstone__desktop_"
         mc:Ignorable="d"
-        Title="AnalyzeVerse" Height="450" Width="800" WindowStyle="None" Background="#FF121518" Foreground="White"
+        Title="AnalyzeVerse" Height="450" Width="800" WindowStyle="None" Background="#FF261704" Foreground="LightYellow"
         >
     <Grid>
         
