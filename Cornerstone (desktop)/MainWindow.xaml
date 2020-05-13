@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
         <Grid x:Name="StyleTopBar" MouseDown="StyleTopBar_MouseDown" Grid.ColumnSpan="5" Background="LightYellow" />
         <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="5" MouseDown="TopBar_MouseDown" Background="#FF493622"
-              Cursor="Hand">
+              Cursor="ScrollAll">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="50" />
@@ -57,8 +57,10 @@
                 Content="Cornerstone"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
                 FontSize="17pt"
-                FontFamily="Grapple BRK"
+                FontFamily="Sanchez Regular"
                 Foreground="LightYellow" />
             <Button x:Name="RightChapterSwitch"
                     xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
@@ -122,7 +124,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <ComboBox x:Name="VersionList"
-                FontFamily="Open Serif Book"
+                FontFamily="Sanchez Regular"
                 FontSize="15pt"
                 Cursor="Hand"
                 HorizontalAlignment="Stretch"
@@ -148,7 +150,7 @@
             <FlowDocumentScrollViewer xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 Foreground="#FFDDEE90"
-                IsToolBarVisible="True" Zoom="80" ScrollViewer.VerticalScrollBarVisibility="Auto" FontFamily="Open Serif Book">
+                IsToolBarVisible="True" Zoom="80" ScrollViewer.VerticalScrollBarVisibility="Auto" FontFamily="Sanchez Regular">
                 <FlowDocument x:Name="ScriptureText"
                     Background="#FF261704" Foreground="LightYellow" />
             </FlowDocumentScrollViewer>
@@ -172,7 +174,7 @@
                 Foreground="LightYellow" Background="{x:Null}" />
             <ComboBox x:Name="Books"
                 Grid.Row="1"
-                FontFamily="Open Serif Book"
+                FontFamily="Sanchez Regular"
                 FontSize="12pt"
                 Cursor="Hand"
                 SelectionChanged="Books_Selected"
@@ -261,7 +263,7 @@
                 Foreground="LightYellow" Background="{x:Null}" />
             <ComboBox x:Name="Chapters"
                 Grid.Row="3"
-                FontFamily="Open Serif Book"
+                FontFamily="Sanchez Regular"
                 FontSize="12pt"
                 Height="30"
                 SelectionChanged="Chapters_Selected"
@@ -285,7 +287,7 @@
                 Foreground="LightYellow" Background="{x:Null}" />
             <ComboBox x:Name="Verses"
                 Grid.Row="5"
-                FontFamily="Open Serif Book"
+                FontFamily="Sanchez Regular"
                 Cursor="Hand"
                 FontSize="12pt"
                 Height="30"
