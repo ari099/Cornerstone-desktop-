@@ -181,14 +181,14 @@ namespace Cornerstone__desktop_ {
 
         private void VerseMouseOver(object sender, MouseEventArgs e) {
             Paragraph verseText = sender as Paragraph;
-            verseText.Background = new SolidColorBrush(Colors.LightYellow);
+            verseText.Background = new SolidColorBrush(Colors.Black);
             //verseText.Foreground = ScriptureText.Background;
         }
 
         private void VerseMouseOut(object sender, MouseEventArgs e) {
             Paragraph verseText = sender as Paragraph;
             verseText.Background = null;
-            //verseText.Foreground = new SolidColorBrush(Colors.LightGreen);
+            //verseText.Foreground = new SolidColorBrush(Colors.LightYellow);
         }
 
         private void VersionList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -198,11 +198,11 @@ namespace Cornerstone__desktop_ {
         }
 
         private void LeftChapterSwitch_Click(object sender, RoutedEventArgs e) {
-            // complete this event handler....
+            if (Chapters.SelectedIndex >= 0) Chapters.SelectedIndex -= 1;
         }
 
         private void RightChapterSwitch_Click(object sender, RoutedEventArgs e) {
-            // complete this event handler....
+            if (Chapters.SelectedIndex <= 65) Chapters.SelectedIndex += 1;
         }
     }
 }

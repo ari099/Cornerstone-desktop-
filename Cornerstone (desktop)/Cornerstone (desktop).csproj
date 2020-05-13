@@ -39,7 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>cornerstone_logo_2__Xgr_icon.ico</ApplicationIcon>
+    <ApplicationIcon>cornerstone_logo_3__yEm_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -47,6 +47,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialIcons, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialIcons.1.0.3\lib\MaterialIcons.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
@@ -157,6 +160,8 @@
   <ItemGroup>
     <Content Include="Bible\bible-mysql.sql" />
     <Content Include="Bible\cross_reference-mysql.sql" />
+    <Content Include="Custom\db.exe" />
+    <Resource Include="cornerstone_logo_3__yEm_icon.ico" />
     <Resource Include="cornerstone_logo_2__150_icon.ico" />
     <Resource Include="cornerstone_logo_2__Xgr_icon.ico" />
     <Resource Include="cornerstone_logo_2__igj_icon.ico" />

@@ -17,54 +17,103 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="117.5"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="78.3"/>
-            <ColumnDefinition Width="78.3"/>
-            <ColumnDefinition Width="78.3"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="75"/>
         </Grid.ColumnDefinitions>
         <Grid x:Name="StyleTopBar" MouseDown="StyleTopBar_MouseDown" Grid.ColumnSpan="5" Background="LightYellow" />
         <Grid x:Name="TopBar" Grid.Row="1" Grid.ColumnSpan="5" MouseDown="TopBar_MouseDown" Background="#FF493622"
               Cursor="Hand">
-            <Label
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="LeftChapterSwitch"
+                    xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
+                    Foreground="White"
+                    FontFamily="Segoe UI Black"
+                    FontSize="15pt"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    BorderThickness="0.5pt"
+                    Height="25"
+                    Width="25"
+                    Cursor="Hand"
+                    Margin="5" Click="LeftChapterSwitch_Click" >
+                <mi:MaterialIcon Icon="ic_arrow_back" />
+            </Button>
+            <Label Grid.Column="2"
                 Content="Cornerstone"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="17pt"
                 FontFamily="Grapple BRK"
-                Foreground="LightYellow"
-            />
+                Foreground="LightYellow" />
+            <Button x:Name="RightChapterSwitch"
+                    xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
+                    Foreground="White"
+                    FontFamily="Segoe UI Black"
+                    FontSize="15pt"
+                    Grid.Column="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    BorderThickness="0.5pt"
+                    Height="25"
+                    Width="25"
+                    Cursor="Hand"
+                    Margin="5" Click="RightChapterSwitch_Click" >
+                <mi:MaterialIcon Icon="ic_arrow_forward" />
+            </Button>
         </Grid>
         <Grid Grid.Column="3" Grid.Row="1">
             <Button x:Name="AppMaximize"
-                Content="🗖"
+                xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
                 Margin="10"
                 FontFamily="Grapple BRK"
                 FontSize="12pt"
                 Cursor="Hand"
+                Height="25"
+                Width="25"
                 Background="#FF261704"
-                Foreground="LightYellow" Click="AppMaximize_Click" BorderBrush="{x:Null}"
-            />
+                Foreground="LightYellow" Click="AppMaximize_Click" BorderBrush="{x:Null}">
+                <mi:MaterialIcon Icon="ic_fullscreen" />
+            </Button>
         </Grid>
         <Grid Grid.Column="4" Grid.Row="1">
             <Button x:Name="AppClose"
-                Content="X"
+                xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
                 Margin="10"
                 FontFamily="Grapple BRK"
                 FontSize="12pt"
                 Cursor="Hand"
+                Height="25"
+                Width="25"
                 Background="#FF682525"
-                Foreground="White" Click="AppClose_Click" BorderBrush="{x:Null}"
-            />
+                Foreground="White" Click="AppClose_Click" BorderBrush="{x:Null}">
+                <mi:MaterialIcon Icon="ic_close" />
+            </Button>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="1">
             <Button x:Name="AppMinimize"
-                Content="-"
+                xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
                 Margin="10"
                 FontFamily="Grapple BRK"
                 FontSize="12pt"
                 Cursor="Hand"
+                Height="25"
+                Width="25"
                 Background="#FF261704"
-                Foreground="LightYellow" Click="AppMinimize_Click" BorderBrush="{x:Null}"
-            />
+                Foreground="LightYellow" Click="AppMinimize_Click" BorderBrush="{x:Null}">
+                <mi:MaterialIcon Icon="ic_line_weight" />
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
             <ComboBox x:Name="VersionList"
@@ -245,33 +294,6 @@
                     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF261704" />
                 </ComboBox.Resources>
             </ComboBox>
-            <Grid Grid.Row="6" Margin="0,0.2,0.2,-67.4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button x:Name="LeftChapterSwitch"
-                    Content="&lt;"
-                    Foreground="White"
-                    FontFamily="Segoe UI Black"
-                    FontSize="25pt"
-                    Background="{x:Null}"
-                    BorderBrush="White"
-                    BorderThickness="1pt"
-                    Cursor="Hand"
-                    Margin="5" Click="LeftChapterSwitch_Click" />
-                <Button x:Name="RightChapterSwitch"
-                    Grid.Column="1"
-                    Content="&gt;"
-                    Foreground="White"
-                    FontFamily="Segoe UI Black"
-                    FontSize="25pt"
-                    Background="{x:Null}"
-                    BorderBrush="White"
-                    BorderThickness="1pt"
-                    Cursor="Hand"
-                    Margin="5" Click="RightChapterSwitch_Click" />
-            </Grid>
         </Grid>
     </Grid>
 </Window>
