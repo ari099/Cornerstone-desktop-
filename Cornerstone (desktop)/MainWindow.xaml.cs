@@ -140,7 +140,7 @@ namespace Cornerstone__desktop_ {
                     verseText.Cursor = Cursors.Hand;
                     verseText.FontSize = 20;
                     verseText.Foreground = new SolidColorBrush(Colors.LightYellow);
-                    verseText.FontFamily = new FontFamily("Sanchez Regular");
+                    verseText.FontFamily = new FontFamily("Nilland");
                     verseText.Margin = new Thickness(5.0);
                     verseText.Padding = new Thickness(5.0);
                     verseText.MouseEnter += new MouseEventHandler(VerseMouseOver);
@@ -161,7 +161,7 @@ namespace Cornerstone__desktop_ {
                 verseText.Cursor = Cursors.Hand;
                 verseText.FontSize = 20;
                 verseText.Foreground = new SolidColorBrush(Colors.LightYellow);
-                verseText.FontFamily = new FontFamily("Sanchez Regular");
+                verseText.FontFamily = new FontFamily("Nilland");
                 verseText.Margin = new Thickness(5.0);
                 verseText.Padding = new Thickness(5.0);
                 verseText.MouseEnter += new MouseEventHandler(VerseMouseOver);
