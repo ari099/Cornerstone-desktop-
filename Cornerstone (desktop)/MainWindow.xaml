@@ -38,19 +38,38 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="LeftChapterSwitch"
                     xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
-                    Foreground="White"
                     FontFamily="Segoe UI Black"
                     FontSize="15pt"
                     Grid.Column="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     BorderThickness="0.5pt"
                     Height="25"
                     Width="25"
                     Cursor="Hand"
                     Margin="5" Click="LeftChapterSwitch_Click" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF261704"/>
+                        <Setter Property="Foreground" Value="LightYellow" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightYellow"/>
+                                <Setter Property="Foreground" Value="#FF261704" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
                 <mi:MaterialIcon Icon="ic_arrow_back" />
             </Button>
             <Label Grid.Column="2"
@@ -64,19 +83,38 @@
                 Foreground="LightYellow" />
             <Button x:Name="RightChapterSwitch"
                     xmlns:mi="clr-namespace:MaterialIcons;assembly=MaterialIcons"
-                    Foreground="White"
                     FontFamily="Segoe UI Black"
                     FontSize="15pt"
                     Grid.Column="3"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     BorderThickness="0.5pt"
                     Height="25"
                     Width="25"
                     Cursor="Hand"
                     Margin="5" Click="RightChapterSwitch_Click" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF261704"/>
+                        <Setter Property="Foreground" Value="LightYellow" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightYellow"/>
+                                <Setter Property="Foreground" Value="#FF261704" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
                 <mi:MaterialIcon Icon="ic_arrow_forward" />
             </Button>
         </Grid>
@@ -173,7 +211,7 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="SandyBrown"/>
+                                <Setter Property="Background" Value="Chocolate"/>
                                 <Setter Property="Foreground" Value="White" />
                             </Trigger>
                         </Style.Triggers>
